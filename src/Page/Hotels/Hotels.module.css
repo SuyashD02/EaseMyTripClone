@@ -1,0 +1,388 @@
+
+.searchBarHotel{
+    display: flex;
+  
+    height: 7vh;
+    width: 86vw;
+    border-radius: 5px;
+    align-items: center;
+    
+}
+.searchBarHotelHeaders{
+    background-color: #2f81ed;
+    background-image: linear-gradient(to right, #2F80ED, #56CCF2);
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    
+
+}
+.searchBHedersHotel{
+    
+    background-color: #fff;
+    border-radius: 5px;
+       width: 25vw;
+       height: 7vh;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+}
+.searchFromHotel{
+    width: 24vw;
+    margin-left: 10px;
+    height: 6vh;
+    
+    
+
+}
+.inputFormSectionHotel{
+    height: 3vh;
+    width: 23vw;
+    border: none;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+   
+    
+}
+.formSearchBoxHotel{
+   margin-left: 1px;
+   width: 23vw;
+   border: none;
+}
+.headingInputHotel{
+    font-size: 13px;
+    font-weight: 500;
+    color: #737373;
+}
+.searchCheckIn{
+    background-color: #fff;
+    width: 14vw;
+    height: 7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1.5%;
+   
+   
+   
+}
+.searchCheckInClick{
+    height: 6vh;
+    width: 13vw;
+    margin-left: 10px;
+    
+}
+
+.searchCheckOutClick{
+    height: 6vh;
+    width: 13vw;
+    margin-left: 10px;
+}
+.searchCheckOut{
+    background-color: #fff;
+    width: 14vw;
+    height: 7vh;
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+}
+.searchRooms{
+    background-color: #fff;
+    border-radius: 5px;
+    width: 18vw;
+    height: 7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1.5%;
+}
+.searchRoomsClick{
+    height: 6vh;
+    width: 17vw;
+    margin-left: 10px;
+}
+.searchButtonHotel{
+    height: 7vh;
+    width: 8vw;
+    background-image: linear-gradient(to right, #56CCF2);
+    margin-left: 1.5%;
+    display: flex;
+    align-items: center;
+    border: 1.5px solid white;
+    justify-content: center;
+    border-radius: 5px;
+    color: #fff;
+}
+.inputDatepickIn{
+    width: 13vw;
+    height: 3.5vh;
+    border: none;
+    border-radius: 5px;
+}
+.headingCheckIn{
+    font-size: 13px;
+    font-weight: 500;
+    color: #737373;   
+}
+.headingCheckOut{
+    font-size: 13px;
+    font-weight: 500;
+    color: #737373;  
+}
+.inputDatepickOut{
+    width: 13vw;
+    height: 3.5vh;
+    border: none;
+    border-radius: 5px;
+}
+/* main Content */
+.hotelbackgroundSection{
+    display: flex;
+    justify-content: center;
+    /* height: 79.65vh; */
+    overflow: auto;
+    
+    width: 100%;
+    background-color: #e8f2fa;
+    z-index: 0;
+}
+
+.hotelMainSection{
+    display: flex;
+    flex-direction: row;
+    height: 78.3vh;
+    width: 90%;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: #e8f2fa;
+    
+}
+.leftSideDataHotel{
+    /* background-color: aqua; */
+    width: 15vw;
+}
+.rightSideDataHotel{
+    
+    width: 74vw;
+    overflow: auto;
+    display: grid;
+    
+   
+    
+}
+.rightHeaderHotel{
+    display: flex;
+    height: 4vh;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    background-color: #e8f2fa;
+    z-index: 1;
+}
+.hotelSorting{
+    display: flex;
+    gap: 10px;
+}
+.boxSearchdataHotel{
+    display: grid;
+    justify-content: center;
+  max-height: 75vh;
+}
+.hotelDataBox{
+    border: 1px solid #c9d7e1;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 7px;;
+    background-color: #fff;
+    width: 72vw;
+    height: 25vh;
+    margin-top: 10px;
+    border: none;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    overflow-y: auto;
+    gap: 10px;
+}
+.hotelImage{
+    width: 25%;
+    height: 23vh;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    margin-left: 10px;
+    z-index: 0;
+    border: 2px solid black;
+}
+.imageHotel{
+    object-fit: cover;
+    width: 100%;
+    height: 25vh;
+  
+}
+.hotelDetailSection{
+    border: 2px solid red;
+    width: 71%;
+    height: 23vh;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.hotelDetails{
+    /* border: 2px solid blue; */
+    height: 22vh;
+    width: 70%;
+}
+.nameRating{
+    display: flex;
+    justify-content: space-between;
+   
+}
+.hotelDetailHeader{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    
+}
+
+.ratingHotel{
+    border-radius: 5px;
+    background: #2451BC;
+    color: #fff;
+   
+    padding: 5px;
+    width: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.pHotelRating{
+    font-size: 12px;
+    font-weight: 600;
+}
+.dataHotel{
+    
+    height: 4vh;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.hotelLocation{
+    font-size: 12px;
+    display: flex;
+    gap: 5px;
+    margin-top: 4px;
+   
+}
+
+.hotelAmenities{
+    
+    height: 8vh;
+    display: grid;
+    margin-top: 10px;
+   
+}
+.amenityBox {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 10px;
+  }
+/* book hotel section */
+  .hotelBooking{
+    /* border: 2px solid greenyellow; */
+    height: 22vh;
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+  }
+  .priceTaxSection{
+    /* border: 2px solid blue; */
+    height: 13vh;
+    display: flex;
+    flex-direction: column;
+    width: 97%;
+  }
+  
+  .priceHotelSection{
+    
+    height: 5.5vh;
+    display: flex;
+    align-items: center;
+    justify-content:end;
+    width: 100%;
+    float: right;
+    font-size: 22px;
+    text-align: right;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+  .taxesHotelSection{
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    font-size: 13px;
+    text-align: right;
+   
+
+  }
+  .resIconHotel{
+    width: 12px;
+    height: 12px;
+  }
+.taxParaHotel{
+    font-size: 11px;
+}
+.perNightHotel{
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    
+    font-size: 11px;
+    color: #737373;
+}
+.buttonsSectionHotel{
+    /* border: 2px solid violet; */
+    height: 8.2vh;
+   
+  }
+  .buttonViewRoom{
+    display: flex;
+    justify-content: end;
+  }
+.viewHotel{
+    padding: 7px 0px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background-color: #ef6614;
+    border-radius: 20px;
+    float: right;
+    width: 90%;
+    cursor: pointer;
+    border: none;
+    margin-top: 2px;
+}
+.buttonLoginHotel{
+    font-size: 12px;
+    color: #2196f3;
+    font-weight: 600;
+    width: 90%;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 22px;
+    margin-top: 4px;
+}
