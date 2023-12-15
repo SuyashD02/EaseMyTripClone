@@ -47,11 +47,9 @@
 .clickH3{
     font-weight: 100;
     font-size: 15px;
+    cursor: pointer;
 }
-.clickH2{
-    font-size: 3rem;
-    color: lightgray;
-}
+
 .joinIcon{
     width: 50px;
     height: 100px;
@@ -137,6 +135,7 @@
 .dropdownContent {
     width: 150px; 
     margin-top: 2em;
+    z-index: 2;
 }
 .dropdownContent {
     position: absolute;

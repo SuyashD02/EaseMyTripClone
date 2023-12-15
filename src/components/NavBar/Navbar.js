@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import Classes from "./Navbar.module.css";
 import Avatar from '@mui/material/Avatar';
-import Divider from '@mui/material/Divider';
+import { Box, Divider, Modal } from "@mui/material";
 
 function Navbar() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -35,15 +35,14 @@ function Navbar() {
           <div className={Classes.navRouteContent}>
             <div className={Classes.clickSection}>
               <h3 className={Classes.clickH3}>FLIGHTS</h3>
-              <small className={Classes.clickH2}>|</small>
+              <Divider orientation="vertical" flexItem />
               <h3 className={Classes.clickH3}>HOTELS</h3>
-              <h2 className={Classes.clickH2}>|</h2>
+              <Divider orientation="vertical" flexItem />
               <h3 className={Classes.clickH3}>TRAINS</h3>
-              <h2 className={Classes.clickH2}>|</h2>
+              <Divider orientation="vertical" flexItem />
               <h3 className={Classes.clickH3}>BUS</h3>
-              <h2 className={Classes.clickH2}>|</h2>
+              <Divider orientation="vertical" flexItem />
               <h3 className={Classes.clickH3}>HOLIDAYS</h3>
-              
             </div>
           </div>
           <div className={Classes.navJoinSection}>
