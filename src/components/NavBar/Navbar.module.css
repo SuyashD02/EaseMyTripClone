@@ -1,105 +1,128 @@
 .navbarEase{
-    height: 95px;
+    height: 70px;
     width: 100%;
-    margin-top:-22px;
     display: flex;
     flex-direction: row;
 }
 .navContent{
     width: 100%;
-    height: 14vh;
+    height: 100%;
     display: flex;
     gap: 20px;
     
 }
 .navClickSection{
-    height: 14vh;
-    width: 60vw;
-    margin-left: 10%;
+    height: 100%;
+    width: 80vw;
+    margin-left: 10px;
     display: flex;
 }
 .navLogoSection{
     width: 10vw;
-    height: 14vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .logoEase{
     width: 115px;
-    height: 115px;
+    margin-top: 2px;
 }
 .navRouteContent{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: aqua; */
-    width: 60%;
+    width: 65%;
 
 }
 .clickSection{
     display: flex;
     align-items: center;
-    margin-top: 20px;
-    gap: 10px;
-    /* background-color: aquamarine; */
+    height: 100%;
+    gap: 5px;
     width: 100%;
    
 }
 /* Text Styles */
-.clickH3{
-    font-weight: 100;
-    font-size: 15px;
+.clickFLIGHTSH3{
+    font-weight: 500;
+    font-size: 13px;
     cursor: pointer;
+    color: #000000;
+    padding: 19px 9px;
+    text-transform: uppercase;
+}
+.clickFLIGHTSH3:hover{
+    color: #ef6614;
+    border-bottom: 5px solid #ef6614;
+}
+.clickHOTELSH3{
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    color: #000000;
+    padding: 19px 9px;
+    text-transform: uppercase;
+    
+}
+.clickHOTELSH3:hover{
+    color: #ef6614;
+    border-bottom: 5px solid #ef6614;
+}
+.clickTRAINSH3{
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    color: #000000;
+    padding: 19px 9px;
+    text-transform: uppercase; 
+}
+.clickTRAINSH3:hover{
+    color: #ef6614;
+    border-bottom: 5px solid #ef6614;
+}
+.clickBUSH3{
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    color: #000000;
+    padding: 19px 9px ;
+    text-transform: uppercase;
+    
+}
+.clickBUSH3:hover{
+    color: #ef6614;
+    border-bottom: 5px solid #ef6614;
 }
 
 .joinIcon{
     width: 50px;
-    height: 100px;
 }
 .navJoinSection{
-  
     display: flex;
-    justify-content: center;
-    width: 10vw;
-
-
-
+    align-items: center;
+    justify-content: end;
+    width: 15vw;
 }
 .navUser{
-    
-    width: 29vw;
-}
-.navUserInfo{
-    background-color: chocolate;
-    width: 28vw;
-    height: 5vh;
-    
+    width: 20vw;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 /* my Account */
-
-.myhelp{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 200px;
-    height: 5vh;
-    margin-top: 1.5em;
-    margin-left: 2em;
-    gap: 10px;
-}
 .myAcount{
     display: flex;
-    margin-left: 250px;
+    align-items: center;
     cursor: pointer;
-    width: 200px;
+    width: 155px;
     height: 34px;
     margin-top: 0.1em;
-    /* margin-left: 50%; */
-    
     gap: 10px;
-    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-y: hidden; 
     overflow-x: hidden;
-    /* background-color: aqua; */
-
 }
 
 .userIconNav{
@@ -123,19 +146,23 @@
     position: relative;
     box-shadow: 1px 2px 5px black;
     background-color: white;
-    border: none;
     border-radius: 5px;
-    height: 180px;
-    /* margin-left: -65px; */
-    right: 40px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     z-index: 1;
    
 
 }
 .dropdownContent {
-    width: 150px; 
+    width: 200px;
+    height: 100%;
+    right: 3px;
     margin-top: 2em;
     z-index: 2;
+    
 }
 .dropdownContent {
     position: absolute;
@@ -148,12 +175,14 @@
     height: auto;
 }
 
+.bookingP{
+    font-size: 13px;
+    color: #000;
+}
+
 /* 24x7 Helpline */
 
-.dropdownhelpContent {
-    width: 140px; 
-    margin-top: 2em;
-}
+
 .dropdownhelpContent {
     position: absolute;
     display: none;
@@ -162,9 +191,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    height: auto;
-   
-   
+    height: auto; 
 }
 .myhelp{
     cursor: pointer;
@@ -174,44 +201,7 @@
     flex-direction: column;
     gap: 8px;
     height: 4vh;
-    
 }
-
-.helpIconNav{
-    width: 30px; /* Width of the circular container */
-    height: 30px; /* Height of the circular container */
-    background-color: white; /* White background color for the circle */
-    border-radius: 50%; /* Make the container circular */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    /* margin-top: 4em;
-    margin-left: 15em; */
-}
-.help{
-    margin-top: 35px;
-    margin-right: 77px;
-    width: 355px;
-}
-.helpbox{
-    border: 2px solid black;
-    box-shadow: 1px 2px 5px black;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    height: 12vh;
-    margin-left: -65px;
-    
-}
-.navhelp{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    height: 4vh;
-    z-index: 3;
-}
-
 .dividerLogin{
     margin-top: 5px;
 }
@@ -240,18 +230,8 @@
     color: #ef6614;
     border: 1px solid #ef6614;
 }
-.tellNo24x7{
-    height: 5vh;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-.divider24x7{
-    margin-top: 10px;
-}
-.helpEmail{
-    display: flex;
-    align-items: center;
-    height: 5vh;
-    cursor: pointer;
+.linkSection{
+    color: black;
+  text-decoration: none;
+  
 }

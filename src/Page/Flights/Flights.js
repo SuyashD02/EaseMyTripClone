@@ -22,9 +22,9 @@ function Flights() {
     );
   async function handleSearch() {
     try {
-      const projectID = 'f104bi07c490';
+      const projectID = '2zqsmiro66wm';
       const dayAbbreviation = moment(departureDate).format('dddd');      
-      const apiUrl = `https://academics.newtonschool.co/api/v1/bookingportals/flight/?search={"source":"${selectedCity}","destination":"${selectedToCity}"}&day="${dayAbbreviation}"`;
+      const apiUrl = `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"${selectedCity}","destination":"${selectedToCity}"}&day="${dayAbbreviation}"`;
       const response = await fetch(apiUrl, {
         method: 'GET',
         headers: {

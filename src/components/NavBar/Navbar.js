@@ -3,6 +3,9 @@ import React from "react";
 import Classes from "./Navbar.module.css";
 import Avatar from '@mui/material/Avatar';
 import { Box, Divider, Modal } from "@mui/material";
+import { Link,NavLink } from "react-router-dom";
+import ListItemButton from "@mui/material/ListItemButton";
+import { Height } from "@mui/icons-material";
 
 function Navbar() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -26,23 +29,31 @@ function Navbar() {
       <div className={Classes.navClickSection}>
         <div className={Classes.navContent}>
           <div className={Classes.navLogoSection}>
+            <NavLink to="/">
             <img
               className={Classes.logoEase}
               src="https://www.easemytrip.com/images/brandlogo/emtlogo_new6.svg"
               alt="logo Image"
             />
+            </NavLink>
           </div>
           <div className={Classes.navRouteContent}>
             <div className={Classes.clickSection}>
-              <h3 className={Classes.clickH3}>FLIGHTS</h3>
-              <Divider orientation="vertical" flexItem />
-              <h3 className={Classes.clickH3}>HOTELS</h3>
-              <Divider orientation="vertical" flexItem />
-              <h3 className={Classes.clickH3}>TRAINS</h3>
-              <Divider orientation="vertical" flexItem />
-              <h3 className={Classes.clickH3}>BUS</h3>
-              <Divider orientation="vertical" flexItem />
-              <h3 className={Classes.clickH3}>HOLIDAYS</h3>
+              <Link className={Classes.linkSection} to={"/flights"}>
+              <h3 className={Classes.clickFLIGHTSH3}>FLIGHTS</h3>
+              </Link>
+              <Divider orientation="vertical"  style={{"height":"40%"}} />
+              <Link className={Classes.linkSection} to={"/"}>
+              <h3 className={Classes.clickHOTELSH3}>HOTELS</h3>
+              </Link>
+              <Divider orientation="vertical" style={{"height":"40%"}} />
+              <Link className={Classes.linkSection} to={"/train"}>
+              <h3 className={Classes.clickTRAINSH3}>TRAINS</h3>
+              </Link>
+              <Divider orientation="vertical" style={{"height":"40%"}} />
+              <Link className={Classes.linkSection} to={"/bus"}>
+              <h3 className={Classes.clickBUSH3}>BUS</h3>
+              </Link>
             </div>
           </div>
           <div className={Classes.navJoinSection}>
@@ -55,44 +66,6 @@ function Navbar() {
         </div>
       </div>
       <div className={Classes.navUser}>
-        <div className={Classes.navUserInfo}>
-        <div className={Classes.myhelp}
-        onMouseEnter={openDropdownhelp}
-        onMouseLeave={closeDropdownhelp}
-        >
-            
-          <div className={Classes.helpIconNav}>
-            <img
-              className={Classes.help}
-              src="https://www.easemytrip.com/images/common/home-sub-sprite.png"
-              alt="profile"
-            />
-          </div>
-          <div className={Classes.navhelp}>
-          <p>24x7 Helpline</p>
-                {isDropdownhelpOpen && (
-                  <div className={Classes.dropdownhelpContent}
-                  onMouseEnter={openDropdownhelp}
-                    onMouseLeave={closeDropdownhelp}
-                    >
-                    <div className={Classes.helpbox}>  
-                    <div className={Classes.tellNo24x7}>
-                    <p className={Classes.telNo}>Tel: 010 - 49313213</p>
-                    </div>
-                    <Divider className={Classes.divider24x7}/>
-                    <div className={Classes.helpEmail}>
-                    <p>Care@gmail.com</p>
-                    </div>
-                   
-                    </div> 
-                  </div>
-                )}
-          </div>
-        
-      </div>
-      <div></div>
-        </div>
-      
         <div className={Classes.myAcount}
         onMouseEnter={openDropdown}
         onMouseLeave={closeDropdown}
@@ -121,8 +94,15 @@ function Navbar() {
                     </div>
                     
                     <Divider className={Classes.dividerLogin}/>
-                    <p>My Booking</p>
-                    <p>Print/Cancel Booking</p>
+                    <div className={Classes.dropMyBookings}>
+                      <ListItemButton>
+                      <p className={Classes.bookingP}>My Booking</p>
+                      </ListItemButton>
+                    <ListItemButton>
+                    <p className={Classes.bookingP}>Log Out</p>
+                    </ListItemButton>
+                    
+                    </div>
                     </div> 
                   </div>
                 )}

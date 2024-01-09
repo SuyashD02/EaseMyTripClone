@@ -8,13 +8,15 @@ const HotelResult=({searchHotelResults})=>(
           searchHotelResults.map((hotelApidata)=>(
             
              <div className={Classes.hotelDataBox} key={hotelApidata._id}>
-               <div className={Classes.hotelImage}>
+              <div className={Classes.hotelDataSection}>
+               <div className={Classes.hotelImageDiv}>
                  <img className={Classes.imageHotel} src={hotelApidata.images[1]}/>
                </div>
                <div className={Classes.hotelDetailSection}>
                <div className={Classes.hotelDetails}>
                 <div className={Classes.nameRating}>
                 <div className={Classes.dataHotel}>
+                  <div className={Classes.nameHotelIcon}></div>
                   <p>{hotelApidata.name}</p>
                 </div>
                 <div className={Classes.hotelDetailHeader}>
@@ -62,7 +64,7 @@ const HotelResult=({searchHotelResults})=>(
                 </div>
                </div>
                </div>
-              
+               </div>
              </div>
               ))
             }
