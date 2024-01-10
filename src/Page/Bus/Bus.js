@@ -5,7 +5,7 @@ function Bus(){
         <div>
             <Navbar/>
             <div>
-                <h3>Bus Section </h3>
+                <h3 className="text-3xl text-center font-bold">Bus Section </h3>
             </div>
         </div>
     )

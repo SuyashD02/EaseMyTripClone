@@ -1,4 +1,4 @@
-.flightBooking{
+.hotelSearchSection{
     background-color: #2f81ed;
     background-image: linear-gradient(to right, #2F80ED, #56CCF2);
    width: 100%;
@@ -147,11 +147,7 @@
     color: #fff;
     cursor: pointer;
 }
-.swapIcon{
-   height: 4.5vh;
-   margin-left: -16px;
-   margin-top: 30px;
-}
+
 .inputFormSection{
     width: 19vw;
     height: 8vh;
@@ -209,7 +205,7 @@
 }
 .offerHeading{
     height: 5vh;
-    margin-top: 5px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -226,7 +222,7 @@
 .hotelOffersSection{
     /* border: 1px solid black; */
     height: 45vh;
-    margin-top: 15px;
+    margin-top: 20px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -278,6 +274,9 @@
     margin-top: 10px;
     /* border: 1px solid red; */
 }
-
+.headingOffers{
+    font-size: 28px !important;
+    font-weight: 700 !important;
+}
 
 /* for testing */

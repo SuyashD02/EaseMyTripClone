@@ -6,7 +6,6 @@ import Flights from "../Page/Flights/Flights";
 import Hotels from "../Page/Hotels/Hotels";
 import HotelHome from "../Page/Hotels/HotelHome";
 import Train from "../Page/Train/Train";
-import Sample from "./Sample";
 import Bus from "../Page/Bus/Bus";
 function Routing(){
     return(
@@ -19,7 +18,6 @@ function Routing(){
             <Route path="/" element={<HotelHome/>} />
             <Route path="/train" element={<Train/>} />
             <Route path="/bus" element={<Bus/>}/>
-            <Route path="/sample" element={<Sample/>}/>
         </Routes>
         </BrowserRouter>
     )

@@ -122,7 +122,7 @@ function HotelHome() {
     <div className={Classes.flightsSection}>
       <Navbar />
 
-      <div className={Classes.flightBooking}>
+      <div className={Classes.hotelSearchSection}>
         <div className={Classes.headSearchbar}>
           <div className={Classes.captionHotel}>
             <h1 className={Classes.searchLowestH1}>
@@ -158,36 +158,6 @@ function HotelHome() {
                     ))}
                   </div>
                 )}
-
-                {/* {isDropdownOpen && (
-                  <div className={Classes.dropMyLocation}>
-                    <ListItemButton>
-                      <p className={Classes.locationP}>Mumbai</p>
-                    </ListItemButton>
-                    <ListItemButton>
-                      <p className={Classes.locationP}>Delhi</p>
-                    </ListItemButton>
-                    <ListItemButton>
-                      <p className={Classes.locationP}>Bangalore 
-                      Kolkata
-                    Chennai
-                    Hyderabad
-                    Pune
-                    Ahmedabad
-                    Surat
-                    Jaipur
-                    Lucknow
-                    Kanpur
-                    Nagpur
-                    Indore
-                    Thane
-                    Bhopal
-                    Visakhapatnam
-                    Pimpri-Chinchwad
-                    Patna
-                    Vadodara
-                  </div>
-                )} */}
               </div>
             </div>
           </div>

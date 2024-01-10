@@ -8,8 +8,10 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [hotelLocation, setHotelLocation] = useState("");
   const [hotelDepartureDate, setHotelDepartureDate] = useState("");
+  const[AirportFrom,setAriportFrom] = useState(["Delhi","Indira Gandhi International Airport"]);
+  const[AirportTo,setAriportTo] = useState(["Goa","Goa International Airport"]);
   return (
-    <AuthContext.Provider value={{ setHotelLocation, hotelLocation,hotelDepartureDate, setHotelDepartureDate}}>
+    <AuthContext.Provider value={{ setHotelLocation, hotelLocation,hotelDepartureDate, setHotelDepartureDate,AirportFrom,setAriportFrom,AirportTo,setAriportTo}}>
       {children}
     </AuthContext.Provider>
   );
