@@ -39,11 +39,11 @@ function Navbar() {
           </div>
           <div className={Classes.navRouteContent}>
             <div className={Classes.clickSection}>
-              <Link className={Classes.linkSection} to={"/flights"}>
+              <Link className={Classes.linkSection} to={"/"}>
               <h3 className={Classes.clickFLIGHTSH3}>FLIGHTS</h3>
               </Link>
               <Divider orientation="vertical"  style={{"height":"40%"}} />
-              <Link className={Classes.linkSection} to={"/"}>
+              <Link className={Classes.linkSection} to={"/hotelhome"}>
               <h3 className={Classes.clickHOTELSH3}>HOTELS</h3>
               </Link>
               <Divider orientation="vertical" style={{"height":"40%"}} />

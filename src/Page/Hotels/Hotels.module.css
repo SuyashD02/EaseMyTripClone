@@ -1,11 +1,11 @@
 .searchBarHotel{
     display: flex;
-  
-    height: 7vh;
-    width: 86vw;
+    gap:12px;
+    height: 70%;
+    width: 80%;
     border-radius: 5px;
     align-items: center;
-    
+   
 }
 .searchBarHotelHeaders{
     background-color: #2f81ed;
@@ -21,72 +21,91 @@
 
 }
 .searchBHedersHotel{
-    
     background-color: #fff;
     border-radius: 5px;
        width: 25vw;
-       height: 7vh;
+       height: 100%;
        display: flex;
-       flex-direction: column;
        justify-content: center;
+       align-items: center;
 }
 .searchFromHotel{
-    width: 24vw;
-    margin-left: 10px;
-    height: 6vh;
-    
-    
-
+    width: 95%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
 }
 .inputFormSectionHotel{
-    height: 3vh;
-    width: 23vw;
+    height: 4vh;
+    width: 100%;
     border: none;
     display: flex;
     align-items: center;
     border-radius: 5px;
    
-    
+}
+.formSearchBoxHotel:focus{
+    outline: none;
 }
 .formSearchBoxHotel{
    margin-left: 1px;
-   width: 23vw;
    border: none;
+   font-size: 14px;
+   cursor: pointer;
 }
 .headingInputHotel{
     font-size: 13px;
     font-weight: 500;
     color: #737373;
 }
+.hotelDatesSection{
+    display: flex;
+    height: 100%;
+    width: 28vw;
+    border-radius: 5px;
+    overflow: hidden;
+}
 .searchCheckIn{
     background-color: #fff;
-    width: 14vw;
-    height: 7vh;
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 1.5%;
-   
-   
-   
 }
 .searchCheckInClick{
-    height: 6vh;
-    width: 13vw;
+    height: 100%;
+    width: 50%;
     margin-left: 10px;
     
     
+}
+.hotelInputDatepickIn{
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+}
+.hotelInputDatepickIn:focus{
+    outline: none;
 }
 
 .searchCheckOutClick{
-    height: 6vh;
-    width: 13vw;
+    height: 100%;
+    width: 100%;
     margin-left: 10px;
+}
+.hotelinputDatepickOut{
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+}
+.hotelinputDatepickOut:focus{
+    outline: none;
 }
 .searchCheckOut{
     background-color: #fff;
-    width: 14vw;
-    height: 7vh;
+    width: 50%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     
@@ -95,12 +114,11 @@
 .searchRooms{
     background-color: #fff;
     border-radius: 5px;
-    width: 18vw;
-    height: 7vh;
+    width: 15vw;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 1.5%;
 }
 .searchRoomsClick{
     height: 6vh;
@@ -108,16 +126,20 @@
     margin-left: 10px;
 }
 .searchButtonHotel{
-    height: 7vh;
-    width: 8vw;
+    height: 100%;
+    width: 9vw;
     background-image: linear-gradient(to right, #56CCF2);
     margin-left: 1.5%;
     display: flex;
     align-items: center;
     border: 1.5px solid white;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 50px;
     color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 5px;
+    cursor: pointer;
 }
 .inputDatepickIn{
     width: 13vw;
@@ -166,7 +188,6 @@
     
 }
 .leftSideDataHotel{
-    /* background-color: aqua; */
     width: 20%;
     border: 1px solid blue;
     display: flex;
@@ -502,3 +523,150 @@
     align-items: center;
 }
 
+/* Hotel Detail Page */
+
+.hotelDetailMainDiv{
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hotelDetailInfoSection{
+    width: 80%;
+    height: 60vh;
+    margin-top: 30px;
+    box-shadow: 0 0 7px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hotelDetailMainInfo{
+    border: 1px solid red;
+    height: 99%;
+    width: 99%;
+    display: flex;
+    flex-direction: column;
+}
+.hotelDetailHeaders{
+    width: 100%;
+    height: 10vh;
+    border: 1px solid red;
+    display: flex;
+}
+.hotelDetailName{
+    border: 1px solid black;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.hotelDetailRating{
+    border: 1px solid black;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.ratingHotelDetail{
+    border-radius: 10px;
+    background: #00A664;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px;
+    width: 40%;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.hotelDetailImgPriceSection{
+    border: 1px solid blue;
+    width: 100%;
+    height: 80%;
+    margin-top: 10px;
+    display: flex;
+    gap: 1%;
+}
+.hotelDetailImageSection{
+    border: 1px solid black;
+    height: 100%;
+    width: 65%;
+    display: flex;
+    gap: 1%;
+}
+.hotelMainImage{
+    border: 1px solid red;
+    height: 100%;
+    width: 75%;
+}
+.hotelOtherImage{
+    border: 1px solid blue;
+    height: 100%;
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+.hotelImageSample1{
+    border: 1px solid red;
+    width: 100%;
+    height: 31%;
+}
+.hotelImageSample2{
+    border: 1px solid red;
+    width: 100%;
+    height: 31%;
+}
+.hotelImageSample3{
+    border: 1px solid red;
+    width: 100%;
+    height: 31%;
+}
+.hotelDetailPriceSection{
+    border: 1px solid blueviolet;
+    height: 100%;
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+}
+.hotelDetailCheckIn{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* navigation detail */
+.hotelDetailNavigateSection{
+    width: 80%;
+    height: 8vh;
+    margin-top: 20px;
+    box-shadow: 0 0 7px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.hotelDetailNav{
+    width: 11%;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+}
+/* "w-[100%] h-[10vh] border-red-500 border-solid" */

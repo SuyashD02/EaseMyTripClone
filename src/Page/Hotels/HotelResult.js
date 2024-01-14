@@ -1,8 +1,13 @@
 import React from 'react';
 import { Divider } from '@mui/material';
 import Classes from './Hotels.module.css';
+import { Link } from "react-router-dom";
+import { useAuth } from '../../components/Context';
 
-const HotelResult=({searchHotelResults})=>(
+const HotelResult=({searchHotelResults})=>{
+  const {setHotelId} = useAuth();
+  
+  return(
     <div className={Classes.boxSearchdataHotel}>
              {searchHotelResults &&
           searchHotelResults.map((hotelApidata)=>(
@@ -55,9 +60,15 @@ const HotelResult=({searchHotelResults})=>(
                   <p className={Classes.perNightHotel}>Per Night</p>
                 </div>
                 <div className={Classes.buttonsSectionHotel}>
+                <Link to="/hoteldetails">
                   <div className={Classes.buttonViewRoom}>
-                    <button className={Classes.viewHotel}>View Room</button>
+                    
+                    <button className={Classes.viewHotel}onClick={() => {
+                    setHotelId(hotelApidata._id);
+                  }}>View Room</button>
+                  
                   </div>
+                  </Link>
                   <div className={Classes.buttonLoginHotel}>
                       Login & Save More > 
                       </div>
@@ -69,5 +80,6 @@ const HotelResult=({searchHotelResults})=>(
               ))
             }
             </div>
-);
+  );
+};
 export default HotelResult;

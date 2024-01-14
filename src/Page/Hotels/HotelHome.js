@@ -15,10 +15,9 @@ function HotelHome() {
     hotelLocation,
     hotelDepartureDate,
     setHotelDepartureDate,
+    isSelectedDayCheckOut, setSelectedDayCheckOut
   } = useAuth();
   const navigate = useNavigate();
-
-  const [returnDate, setReturnDate] = useState("");
   const [offers, setOffers] = useState([]);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOfferType, setSelectedOfferType] = useState("HOTELS");
@@ -184,8 +183,8 @@ function HotelHome() {
                 <p className={Classes.pInput}>Check-out</p>
               </div>
               <DatePicker
-                selected={returnDate}
-                onChange={(date) => setReturnDate(date)}
+                selected={isSelectedDayCheckOut}
+                onChange={(date) => setSelectedDayCheckOut(date)}
                 customInput={<CustomInputReturn />}
               />
             </div>

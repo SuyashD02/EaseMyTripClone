@@ -17,12 +17,13 @@ function Hotels() {
     hotelLocation,
     hotelDepartureDate,
     setHotelDepartureDate,
+    searchHotelResults, setSearchHotelResults,
+    isSelectedDayCheckOut, setSelectedDayCheckOut
   } = useAuth();
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(false);
   const [initialApiCallMade, setInitialApiCallMade] = useState(false);
-  const [isSelectedDayCheckOut, setSelectedDayCheckOut] = useState("");
-  const [searchHotelResults, setSearchHotelResults] = useState([]);
+ 
   const [originalHotelData, setOriginalHotelData] = useState([]);
   const [hotelErrorPost, setHotelErrorPost] = useState("");
   const [sortOption, setSortOption] = useState("");
@@ -30,10 +31,12 @@ function Hotels() {
   const [isOpen, setIsOpen] = useState(false);
 const [selectedPriceRange, setSelectedPriceRange] = useState("");
 const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
+var lowerPrice;
+var highPrice;
 
   const CustomInput = ({ value, onClick }) => (
     <input
-      className={Classes.inputDatepickIn}
+      className={Classes.hotelInputDatepickIn}
       type="text"
       value={moment(value).format("dddd")}
       onClick={onClick}
@@ -42,7 +45,7 @@ const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
   );
   const CustomInputCheckout = ({ value, onClick }) => (
     <input
-      className={Classes.inputDatepickOut}
+      className={Classes.hotelinputDatepickOut}
       type="text"
       value={moment(value).format("dddd")}
       onClick={onClick}
@@ -83,9 +86,6 @@ const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
     // }
 
       let apiUrlHotel = `https://academics.newtonschool.co/api/v1/bookingportals/hotel?limit=10&page=${page}&search={"location":"${hotelLocation}"}&day="${formattedDate}"`;
-      // if (filterOptions){
-      //   apiUrlHotel += `&filter={"rooms.price":{"$gte":${selectedPriceRange.low},"$lte":${selectedPriceRange.high}}}`;
-      // }
       const response = await fetch(apiUrlHotel, {
         method: "GET",
         headers: {
@@ -122,6 +122,7 @@ const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
 
     if (scrollTop + clientHeight >= scrollHeight - 100) {
       handleHotelSearch();
+      // filterByPriceRange(lowerPrice,highPrice);
     }
   }, 200);
 
@@ -174,6 +175,8 @@ const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
     }
   }
   function filterByPriceRange(minPrice, maxPrice) {
+    lowerPrice=minPrice;
+    highPrice=maxPrice;
     setSearchHotelResults(
       searchHotelResults.filter(
         (a) => getPrice(a) >= minPrice && getPrice(a) <= maxPrice
@@ -196,12 +199,15 @@ const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
   // };
   useEffect(() => {
     handleHotelSearch();
-  }, [selectedPriceRange]);
+  }, []);
 
   const handleOpenDropdown=()=>{
     setIsOpen(true);
   }
-  
+  const handleSearch=()=>{
+    setSearchHotelResults([]);
+    handleHotelSearch();
+  }
   
   return (
     <div className={Classes.hotelsParent}>
@@ -223,7 +229,7 @@ const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
               </div>
             </div>
           </div>
-          <Divider orientation="vertical" />
+          <div className={Classes.hotelDatesSection}>
           <div className={Classes.searchCheckIn}>
             <div className={Classes.searchCheckInClick}>
               <p className={Classes.headingCheckIn}>Check-in</p>
@@ -242,23 +248,22 @@ const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
             <div className={Classes.searchCheckOutClick}>
               <p className={Classes.headingCheckOut}>Check-out</p>
               <DatePicker
-                // style={{"z-index":9999}}
                 selected={isSelectedDayCheckOut}
                 onChange={(date) => setSelectedDayCheckOut(date)}
                 customInput={<CustomInputCheckout />}
               />
             </div>
           </div>
-          <Divider orientation="vertical" />
+          </div>
           <div className={Classes.searchRooms}>
             <div className={Classes.searchRoomsClick}>
-              <p>Rooms & Guests</p>
+              <p className={Classes.headingCheckOut}>Rooms & Guests</p>
             </div>
           </div>
 
           <div
             className={Classes.searchButtonHotel}
-            onClick={handleHotelSearch}
+            onClick={handleSearch}
           >
             <h3>SEARCH</h3>
           </div>

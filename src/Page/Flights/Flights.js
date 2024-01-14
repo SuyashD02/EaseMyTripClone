@@ -38,7 +38,7 @@ function Flights() {
     try {
       const projectID = "2zqsmiro66wm";
       const dayAbbreviation = moment(departureDate).format("dddd");
-      const apiUrl = `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"${AirportFrom[0]}","destination":"${AirportTo[0]}"}&day="${dayAbbreviation}"`;
+      const apiUrl = `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"${AirportFrom[1]}","destination":"${AirportTo[1]}"}&day=${dayAbbreviation}`;
       const response = await fetch(apiUrl, {
         method: "GET",
         headers: {
