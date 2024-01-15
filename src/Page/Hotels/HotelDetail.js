@@ -64,19 +64,46 @@ function HotelDetail() {
                 <div className={Classes.hotelDetailImgPriceSection}>
                   <div className={Classes.hotelDetailImageSection}>
                     <div className={Classes.hotelMainImage}>
-
+                    {/* <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images[0]}/> */}
                     </div>
                     <div className={Classes.hotelOtherImage}>
-                      <div className={Classes.hotelImageSample1}></div>
-                      <div className={Classes.hotelImageSample2}></div>
-                      <div className={Classes.hotelImageSample3}></div>
+                      <div className={Classes.hotelImageSample1}>
+                      {/* <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images[1]}/> */}
+                      </div>
+                      <div className={Classes.hotelImageSample2}>
+                      {/* <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images[2]}/> */}
+                      </div>
+                      <div className={Classes.hotelImageSample3}>
+                      {/* <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images[3]}/> */}
+                      </div>
                     </div>
 
                   </div>
                   <div className={Classes.hotelDetailPriceSection}>
                   <Divider flexItem  />
-                  <div className="w-[100%] h-[42%] border-red-500 border-solid">
+                  <div className="w-[100%] h-[42%] border border-red-500 border-solid flex">
+                    <div className="w-[50%] h-[100%] border border-blue-500 border-solid flex flex-col">
+                      <div className="flex mt-[10px]  items-center gap-[5px]">
+                        <p className="h-[18px] w-[4px] rounded-[3px] bg-[#0c6be9] "></p>
+                        {/* <p className="text-[17px] font-[600] text-[#446DCB]">{hotelDetailData.rooms[0].roomType}</p> */}
+                      </div>
+                      <div className="text-[13px] font-[500] text-[#000]">
+                        <p>2 x Guest | 1 x Room</p>
+                      </div>
+                    </div>
+                    <div className="w-[50%] h-[100%] border border-blue-500 border-solid">
+                      <div className="mt-[10px] flex items-center justify-end gap-[1px] border border-red-500 border-solid w-[100%] h-[5vh] text-[24px] font-[600] ">
+                        <img src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_black.svg"/>
+                        {/* <p className="mr-[2px]">{hotelDetailData.rooms[0].costPerNight}</p> */}
+                      </div>
+                      <div className={Classes.taxesHotelSection}>
+                    <p>+ </p>
+                    <img className={Classes.resIconHotel} src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_black.svg"/>
+                    {/* <p className={Classes.taxParaHotel}> {hotelDetailData.rooms[0].costDetails.taxesAndFees} Taxes & fees</p> */}
+                  </div>
+                      
 
+                    </div>
                   </div>
                   <Divider flexItem  />
                   <div className="w-[100%] h-[15%] flex">
@@ -102,6 +129,21 @@ function HotelDetail() {
               </div>
               <div className={Classes.hotelDetailNav}>
                 <p>Amenities</p>
+              </div>
+            </div>
+            <div className={Classes.hotelDetailRoomsSection}>
+              <div className="w-[100%] h-[6vh] border border-red-500 border-solid flex bg-[#feecde] text-[13px] font-medium">
+                <div className="h-[100%] w-[25%] border border-blue-500 border-solid flex items-center">
+                  <p className="ml-[20px]">Room Type</p>
+                </div>
+                <div className="h-[100%] w-[25%] border border-blue-500 border-solid flex items-center">
+                  <p className="ml-[20px]">Benefits</p>
+                </div>
+                <div className="h-[100%] w-[50%] border border-blue-500 border-solid flex items-center justify-center">
+                  <p>Per Night Price</p>
+                </div>
+
+
               </div>
             </div>
       </div>

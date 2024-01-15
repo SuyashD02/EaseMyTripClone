@@ -527,6 +527,7 @@
 
 .hotelDetailMainDiv{
     border: 1px solid black;
+    background-color: #EDF7FD;
     width: 100%;
     height: 100%;
     display: flex;
@@ -668,5 +669,15 @@
     font-weight: 600;
     color: #000;
     cursor: pointer;
+}
+/* Rooms Section */
+.hotelDetailRoomsSection{
+    width: 80%;
+    height: 70vh;
+    margin-top: 20px;
+    box-shadow: 0 0 7px rgb(0 0 0 / 25%);
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden;
 }
 /* "w-[100%] h-[10vh] border-red-500 border-solid" */
