@@ -64,44 +64,45 @@ function HotelDetail() {
                 <div className={Classes.hotelDetailImgPriceSection}>
                   <div className={Classes.hotelDetailImageSection}>
                     <div className={Classes.hotelMainImage}>
-                    {/* <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images[0]}/> */}
+                    <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images?.[0]}/>
                     </div>
                     <div className={Classes.hotelOtherImage}>
                       <div className={Classes.hotelImageSample1}>
-                      {/* <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images[1]}/> */}
+                      <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images?.[1]}/>
                       </div>
                       <div className={Classes.hotelImageSample2}>
-                      {/* <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images[2]}/> */}
+                      <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images?.[2]}/>
                       </div>
                       <div className={Classes.hotelImageSample3}>
-                      {/* <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images[3]}/> */}
+                      <img className="w-[100%] h-[100%] object-cover" src={hotelDetailData?.images?.[3]}/>
                       </div>
                     </div>
 
                   </div>
                   <div className={Classes.hotelDetailPriceSection}>
                   <Divider flexItem  />
-                  <div className="w-[100%] h-[42%] border border-red-500 border-solid flex">
-                    <div className="w-[50%] h-[100%] border border-blue-500 border-solid flex flex-col">
-                      <div className="flex mt-[10px]  items-center gap-[5px]">
+                  <div className="w-[100%] h-[42%] flex">
+                    <div className="w-[50%] h-[100%]  flex flex-col">
+                      <div className="flex ml-[2px] mt-[10px]  items-center gap-[5px]">
                         <p className="h-[18px] w-[4px] rounded-[3px] bg-[#0c6be9] "></p>
-                        {/* <p className="text-[17px] font-[600] text-[#446DCB]">{hotelDetailData.rooms[0].roomType}</p> */}
+                        <p className="text-[17px] font-[600] text-[#446DCB]">{hotelDetailData.rooms?.[0].roomType}</p>
                       </div>
-                      <div className="text-[13px] font-[500] text-[#000]">
+                      <div className="text-[13px] ml-[2px] font-[500] text-[#000]">
                         <p>2 x Guest | 1 x Room</p>
                       </div>
                     </div>
-                    <div className="w-[50%] h-[100%] border border-blue-500 border-solid">
-                      <div className="mt-[10px] flex items-center justify-end gap-[1px] border border-red-500 border-solid w-[100%] h-[5vh] text-[24px] font-[600] ">
+                    <div className="w-[50%] h-[100%]">
+                      <div className="mt-[10px] flex items-center justify-end gap-[1px] w-[100%] h-[5vh] text-[24px] font-[600] ">
                         <img src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_black.svg"/>
-                        {/* <p className="mr-[2px]">{hotelDetailData.rooms[0].costPerNight}</p> */}
+                        <p className="mr-[2px]">{hotelDetailData.rooms?.[0].costPerNight}</p>
                       </div>
-                      <div className={Classes.taxesHotelSection}>
+                      <div className="flex items-center justify-end text-[12px] font-[550] text-[#000] w-[100%] h-[20%] ">
                     <p>+ </p>
                     <img className={Classes.resIconHotel} src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_black.svg"/>
-                    {/* <p className={Classes.taxParaHotel}> {hotelDetailData.rooms[0].costDetails.taxesAndFees} Taxes & fees</p> */}
+                    <p className="mr-[2px]"> {hotelDetailData.rooms?.[0].costDetails.taxesAndFees} Taxes & fees</p>
+                    
                   </div>
-                      
+                  <p className="text-[12px] mr-[2px] flex  justify-end ">base price(Per Night)</p>
 
                     </div>
                   </div>
@@ -117,8 +118,25 @@ function HotelDetail() {
                     </div>
                   </div>
                   <Divider flexItem  />
-                  <div className="w-[100%] h-[23%] border-red-500 border-solid"></div>
-                  <div className="w-[100%] h-[20%] border-red-500 border-solid"></div>
+                  <div className="w-[100%] h-[23%] items-center flex">
+                  <div className={Classes.hotelAmenities}>
+                  <div >
+                  {hotelDetailData.amenities?.map((amenity, index) => (
+            <span className={Classes.amenityBox} key={index}>{amenity}</span>
+          ))}
+                  </div>
+                </div>
+                  </div>
+                  <div className="w-[100%] h-[20%] flex justify-between items-center">
+                    <div className=" w-[47%] h-[70%] border hover:bg-[#2196f3] text-[#2196f3] border-[#2196f3] border-500 border-solid flex justify-center items-center hover:text-[#fff] rounded-[40px] font-[600] text-[15px] cursor-pointer">
+                      <p>Select Rooms</p>
+                    </div>
+                    <div className=" w-[47%] h-[70%] border hover:bg-[#da5200] bg-[#EF6614] text-[#fff] border-[#EF6614] border-500 border-solid flex justify-center items-center hover:text-[#fff] rounded-[40px] font-[600] text-[15px] cursor-pointer">
+                      <div>
+                        <p>Book Now</p>
+                      </div>
+                    </div>
+                  </div>
                   </div>
                 </div>
               </div>
