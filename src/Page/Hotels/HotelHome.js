@@ -6,8 +6,7 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import { useAuth } from "../../components/Context";
 import ListItemButton from "@mui/material/ListItemButton";
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 function HotelHome() {
   const {

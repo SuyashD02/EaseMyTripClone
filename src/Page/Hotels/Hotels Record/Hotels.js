@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
 
-import Classes from "./Hotels.module.css";
-import Navbar from "../../components/NavBar/Navbar";
+import Classes from "../Hotels.module.css";
+import Navbar from "../../../components/NavBar/Navbar";
 
 import "react-datepicker/dist/react-datepicker.css";
 import _debounce from "lodash/debounce";
 import { Box, Divider, Modal } from "@mui/material";
+
+import { useAuth } from "../../../components/Context";
 import HotelResult from "./HotelResult";
-import { useAuth } from "../../components/Context";
 
 function Hotels() {
   const {

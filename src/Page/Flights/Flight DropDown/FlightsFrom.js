@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../../components/Context";
+import { useAuth } from "../../../components/Context";
 import ListItemButton from "@mui/material/ListItemButton";
-import Classes from "./Flights.module.css";
+import Classes from "../Flights.module.css";
 const FlightFrom = ({ onclose }) => {
   const [airport, setAirport] = useState("");
   const [airportDetail, setAirportDetail] = useState([]);
   const [liData, setLiData] = useState(false);
   const {setAriportFrom} = useAuth();
 
-  const handleLiData = (city,name) => {
-    setAriportFrom([city,name]);
+  const handleLiData = (city,name,iata_code) => {
+    setAriportFrom([city,name,iata_code]);
     setLiData(true);
     onclose(liData);
   };
@@ -54,7 +54,7 @@ const FlightFrom = ({ onclose }) => {
     <div className="w-full h-44 overflow-auto scrollbar">
       <ul className=" cursor-pointer ">
         {airportDetail.map((data, index) => (
-          <ListItemButton onClick={()=>{handleLiData(data.city,data.name)}} className="mt-2" key={index}>
+          <ListItemButton onClick={()=>{handleLiData(data.city,data.name,data.iata_code)}} className="mt-2" key={index}>
             <div className={Classes.listFlightTo}>
             <span className="text-base font-semibold cursor-pointer">
             {data.city}

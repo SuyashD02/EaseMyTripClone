@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../../components/NavBar/Navbar";
-import HotelSearchbar from "./HotelSearchbar";
-import Classes from "./Hotels.module.css";
+import Navbar from "../../../components/NavBar/Navbar";
+import HotelSearchbar from "../HotelSearchbar";
+import Classes from "../Hotels.module.css";
 import { Divider } from '@mui/material';
-import { useAuth } from "../../components/Context";
+import { useAuth } from "../../../components/Context";
 
 function HotelDetail() {
   const [hotelDetailData, setHotelDetailData] = useState([]);
