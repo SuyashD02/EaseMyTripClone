@@ -10,6 +10,7 @@ export function AuthProvider({ children }) {
   const [hotelDepartureDate, setHotelDepartureDate] = useState("");
   const [flightdepartureDate, setFlightDepartureDate] = useState("");
   const [hotelId, setHotelId] = useState("");
+  const [flightId, setFlightId] = useState("");
   const [AirportFrom, setAriportFrom] = useState([
     "Delhi",
     "Indira Gandhi International Airport",
@@ -41,6 +42,7 @@ export function AuthProvider({ children }) {
         setSelectedDayCheckOut,
         flightdepartureDate,
         setFlightDepartureDate,
+        flightId, setFlightId,
       }}
     >
       {children}
