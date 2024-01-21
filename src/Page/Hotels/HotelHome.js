@@ -41,8 +41,26 @@ function HotelHome() {
     "Visakhapatnam",
     "Pimpri-Chinchwad",
     "Patna",
-    "Vadodara"
-    
+    "Vadodara",
+    "Ghaziabad",
+    "Jodhpur",
+    "Dhanbad",
+    "Gwalior",
+    "Rajkot",
+    "Kalyan-Dombivali",
+    "Vasai-Virar",
+    "Ludhiana",
+    "Meerut",
+    "Amritsar",
+    "Agra",
+    "Faridabad",
+    "Coimbatore",
+    "Varanasi",
+    "Allahabad",
+    "Vijayawada",
+    "Jabalpur",
+    "Raipur",
+    "Srinagar",
   ];
   const [filteredLocations, setFilteredLocations] = useState([]);
 
@@ -50,7 +68,7 @@ function HotelHome() {
     <input
       type="text"
       className={Classes.inputhotel}
-      value={moment(value).format("dddd")}
+      value={moment(value).format("DD MMM YYYY")}
       onClick={onClick}
       readOnly
     />
@@ -59,7 +77,7 @@ function HotelHome() {
     <input
       type="text"
       className={Classes.inputhotel}
-      value={moment(value).format("dddd")}
+      value={moment(value).format("DD MMM YYYY")}
       onClick={onClick}
       readOnly
     />

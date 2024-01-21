@@ -27,7 +27,7 @@ function Flights() {
     <input
       type="text"
       className={Classes.inputFlight}
-      value={moment(value).format("dddd")}
+      value={moment(value).format("DD MMM YYYY")}
       onClick={onClick}
       readOnly
     />

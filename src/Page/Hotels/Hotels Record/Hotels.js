@@ -39,7 +39,7 @@ var highPrice;
     <input
       className={Classes.hotelInputDatepickIn}
       type="text"
-      value={moment(value).format("dddd")}
+      value={moment(value).format("DD MMM YYYY")}
       onClick={onClick}
       readOnly
     />
@@ -48,7 +48,7 @@ var highPrice;
     <input
       className={Classes.hotelinputDatepickOut}
       type="text"
-      value={moment(value).format("dddd")}
+      value={moment(value).format("DD MMM YYYY")}
       onClick={onClick}
       readOnly
     />
