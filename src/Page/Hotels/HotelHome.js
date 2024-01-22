@@ -62,7 +62,7 @@ function HotelHome() {
     "Raipur",
     "Srinagar",
   ];
-  const [filteredLocations, setFilteredLocations] = useState([]);
+  const [filteredLocations, setFilteredLocations] = useState(locations);
 
   const CustomInput = ({ value, onClick }) => (
     <input
