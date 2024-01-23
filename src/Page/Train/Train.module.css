@@ -181,3 +181,12 @@
     color: #172033;
     margin-top: 10px;
 }
+/* Train Data */
+.trainDataSection{
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 7px rgb(0 0 0 / 17%);
+    margin-top: 10px;
+}

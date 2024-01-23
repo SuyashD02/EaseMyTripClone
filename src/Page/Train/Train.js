@@ -7,11 +7,13 @@ import moment from "moment";
 import { useAuth } from "../../components/Context";
 import TrainFrom from "./DropDown/TrainFrom";
 import TrainTo from "./DropDown/TrainTo";
+import {useNavigate } from "react-router-dom";
 function Train(){
     const {traindepartureDate, setTrainDepartureDate,trainCity,trainToCity} = useAuth();
     const [trainFromOpen, setTrainFromOpen] = useState(false);
     const [trainToOpen, setTrainToOpen] = useState(false);
     const [offers, setOffers] = useState([]);
+    const navigate = useNavigate();
     const [selectedOfferType, setSelectedOfferType] = useState("RAILS");
     const [loading, setLoading] = useState(true);
     const CustomInput = ({ value, onClick }) => (
@@ -24,7 +26,7 @@ function Train(){
         />
       );
     const handleSearchTrain = () => {
-        // navigate("/flightrecord");
+      navigate("/trainrecord");
       };
       const handleTrainCityInput = () => {
         setTrainFromOpen(!trainFromOpen);

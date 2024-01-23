@@ -9,6 +9,7 @@ import Bus from "../Page/Bus/Bus";
 import HotelDetail from "../Page/Hotels/Hotel Detail/HotelDetail";
 import Hotels from "../Page/Hotels/Hotels Record/Hotels";
 import FlightsRecords from "../Page/Flights/Flights Records/FlightsRecords";
+import TrainDetail from "../Page/Train/Train Detail/TrainDetail";
 function Routing(){
     return(
         <BrowserRouter>
@@ -21,6 +22,7 @@ function Routing(){
             <Route path="/hoteldetails" element={<HotelDetail/>}/>
             <Route path="/flightrecord" element={<FlightsRecords/>}/>
             <Route path="/train" element={<Train/>} />
+            <Route path="/trainrecord" element={<TrainDetail/>} />
             <Route path="/bus" element={<Bus/>}/>
         </Routes>
         </BrowserRouter>
