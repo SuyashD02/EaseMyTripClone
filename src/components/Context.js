@@ -10,10 +10,13 @@ export function AuthProvider({ children }) {
   const [hotelDepartureDate, setHotelDepartureDate] = useState("");
   const [flightdepartureDate, setFlightDepartureDate] = useState("");
   const [traindepartureDate, setTrainDepartureDate] = useState("");
+  const [busdepartureDate, setBusDepartureDate] = useState("");
   const [hotelId, setHotelId] = useState("");
   const [flightId, setFlightId] = useState("");
   const [trainCity, setTrainCity] = useState(["New Delhi"]);
   const [trainToCity, setTrainToCity] = useState(["Pune Junction"]);
+  const [busCity, setBusCity] = useState(["New Delhi"]);
+  const [busToCity, setBusToCity] = useState(["Pune Junction"]);
   const [AirportFrom, setAriportFrom] = useState([
     "Delhi",
     "Indira Gandhi International Airport",
@@ -49,6 +52,9 @@ export function AuthProvider({ children }) {
         traindepartureDate, setTrainDepartureDate,
         trainCity, setTrainCity,
         trainToCity, setTrainToCity,
+        busCity, setBusCity,
+        busToCity, setBusToCity,
+        busdepartureDate, setBusDepartureDate
       }}
     >
       {children}
