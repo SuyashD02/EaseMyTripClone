@@ -179,3 +179,33 @@
 .aminity{
    cursor: pointer;
 }
+/* Open Modal */
+.modalSeatSection{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 75%;
+   height: 90%;
+   border: none;
+   border-radius: 5px;
+   box-shadow: 1px 2px 5px black;
+   background-color: white;
+   padding: 4;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.selectSeatBus{
+   background: url(https://bus.easemytrip.com/new_img/bus-seat-sprite.png) -99px -93px no-repeat;
+    width: 70px;
+    height: 32px;
+    padding: 0;
+    text-align: center;
+    line-height: 30px;
+    font-size: 8px;
+    font-weight: 800;
+    color: #000;
+    cursor: pointer;
+
+}
