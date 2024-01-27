@@ -15,8 +15,8 @@ export function AuthProvider({ children }) {
   const [flightId, setFlightId] = useState("");
   const [trainCity, setTrainCity] = useState(["New Delhi"]);
   const [trainToCity, setTrainToCity] = useState(["Pune Junction"]);
-  const [busCity, setBusCity] = useState(["New Delhi"]);
-  const [busToCity, setBusToCity] = useState(["Pune Junction"]);
+  const [busCity, setBusCity] = useState(["Mumbai, Maharashtra"]);
+  const [busToCity, setBusToCity] = useState(["Pune, Maharashtra"]);
   const [AirportFrom, setAriportFrom] = useState([
     "Delhi",
     "Indira Gandhi International Airport",
@@ -29,6 +29,7 @@ export function AuthProvider({ children }) {
   ]);
   const [searchHotelResults, setSearchHotelResults] = useState([]);
   const [isSelectedDayCheckOut, setSelectedDayCheckOut] = useState("");
+  const [selectedSeats, setSelectedSeats] = useState([]);
   return (
     <AuthContext.Provider
       value={{
@@ -54,7 +55,8 @@ export function AuthProvider({ children }) {
         trainToCity, setTrainToCity,
         busCity, setBusCity,
         busToCity, setBusToCity,
-        busdepartureDate, setBusDepartureDate
+        busdepartureDate, setBusDepartureDate,
+        selectedSeats, setSelectedSeats,
       }}
     >
       {children}

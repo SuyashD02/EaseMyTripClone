@@ -152,6 +152,7 @@
     color: #fff;
     border: none;
     background-color: hsla(0,0%,100%,.1);
+    
  }
  .inputBusDetail:focus{
     outline: none;
@@ -209,3 +210,17 @@
     cursor: pointer;
 
 }
+.selectSeatBusCh{
+   background: url(https://bus.easemytrip.com/new_img/bus-seat-sprite.png) -58px -49px no-repeat;
+    width: 32px;
+    height: 31px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 8px;
+    font-weight: 800;
+    color: #000;
+    cursor: pointer;
+}
+/* .selectedBusSeat{
+   background-color: lawngreen;
+} */
