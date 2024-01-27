@@ -112,12 +112,12 @@ function BusList({ searchResultsBus }) {
                 {open[BusApidata._id] && (
                   <Modal
                     open={open}
-                    onClose={handleClose}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                   >
                     <div className={Classes.modalSeatSection}>
                       <div className="w-[98%] h-[98%] flex justify-between border border-red-500 border-solid ">
+                      <div className={Classes.closeBtnBusSeats} onClick={handleClose}></div>
                         <div className=" border border-orange-500 border-solid w-[70%] flex flex-col items-center">
                           <div className="w-[98%] flex">
                             <div className="flex items-center ">
@@ -503,7 +503,7 @@ function BusList({ searchResultsBus }) {
                         </div>
                         <div className=" border border-blue-500 border-solid w-[29.5%]">
                           <div className="w-[100%] bg-[#eee] rounded-[5px] flex flex-col items-center">
-                            <div className="w-[95%] text-[15px] text-[#000] mt-[10px]">
+                            <div className="w-[95%] text-[15px] text-[#000] mt-[20px]">
                               <p>Boarding Point</p>
                             </div>
                             <div className="w-[95%] text-[14px] text-[#404040] flex gap-[5px] mt-[5px]">

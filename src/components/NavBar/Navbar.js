@@ -6,9 +6,14 @@ import { Box, Divider, Modal } from "@mui/material";
 import { Link,NavLink } from "react-router-dom";
 import ListItemButton from "@mui/material/ListItemButton";
 import { Height } from "@mui/icons-material";
+import { useAuth } from "../Context";
+import ModalLogin from "./ModalLogin";
 
 function Navbar() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const {
+      openLogin, setOpenLogin
+    } = useAuth();
     const [isDropdownhelpOpen, setDropdownhelpOpen] = useState(false);
     const openDropdown = () => {
       setDropdownOpen(true);
@@ -24,6 +29,8 @@ function Navbar() {
       const closeDropdownhelp = () => {
         setDropdownhelpOpen(false);
       };
+      
+      const handleOpenLogin= () => setOpenLogin(true);
   return (
     <div className={Classes.navbarEase}>
       <div className={Classes.navClickSection}>
@@ -90,7 +97,7 @@ function Navbar() {
                       <Avatar/>
                         </div>  
                     <div className={Classes.loginBtnSection}>
-                    <button className={Classes.btnLogin}>LOGIN OR SIGNUP</button>
+                    <button className={Classes.btnLogin} onClick={handleOpenLogin}>LOGIN OR SIGNUP</button>
                     </div>
                     
                     <Divider className={Classes.dividerLogin}/>
@@ -99,14 +106,18 @@ function Navbar() {
                       <p className={Classes.bookingP}>My Booking</p>
                       </ListItemButton>
                     <ListItemButton>
-                    <p className={Classes.bookingP}>Log Out</p>
+                    <p className={Classes.bookingP} >Log Out</p>
                     </ListItemButton>
                     
                     </div>
                     </div> 
+                    
                   </div>
+                  
                 )}
+                {openLogin &&(<ModalLogin/>)}
           </div>
+          
         </div>
       </div>
       

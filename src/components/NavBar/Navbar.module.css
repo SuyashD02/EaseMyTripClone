@@ -235,3 +235,57 @@
   text-decoration: none;
   
 }
+
+/* Modal Login */
+.modalLoginSection{
+    position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 38%;
+   border: none;
+   border-radius: 5px;
+   box-shadow: 1px 2px 5px black;
+   background-color: white;
+   padding: 4;
+   display: flex;
+   justify-content: center;
+  
+}
+.closeBtn{
+    width: 11px;
+    height: 11px;
+    background: url(https://www.easemytrip.com/images/new-login/home-sub-sprite.png) no-repeat -96px -24px;
+    opacity: .3;
+    background-size: 200px 39px;
+    position: absolute;
+    top: 22px;
+    right: 30px;
+    cursor: pointer;
+}
+/* Modal SignUp */
+.modalSignUpSection{
+    position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 38%;
+   border: none;
+   border-radius: 5px;
+   box-shadow: 1px 2px 5px black;
+   background-color: white;
+   padding: 4;
+   display: flex;
+   justify-content: center;
+}
+.closeBtnSignUp{
+    width: 11px;
+    height: 11px;
+    background: url(https://www.easemytrip.com/images/new-login/home-sub-sprite.png) no-repeat -96px -24px;
+    opacity: .3;
+    background-size: 200px 39px;
+    position: absolute;
+    top: 22px;
+    right: 25px;
+    cursor: pointer;
+}

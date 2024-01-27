@@ -224,3 +224,15 @@
 /* .selectedBusSeat{
    background-color: lawngreen;
 } */
+
+.closeBtnBusSeats{
+   width: 11px;
+   height: 11px;
+   background: url(https://www.easemytrip.com/images/new-login/home-sub-sprite.png) no-repeat -96px -24px;
+   opacity: .3;
+   background-size: 200px 39px;
+   position: absolute;
+   top: 18px;
+   right: 25px;
+   cursor: pointer;
+}

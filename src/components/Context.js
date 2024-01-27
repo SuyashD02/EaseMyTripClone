@@ -30,6 +30,8 @@ export function AuthProvider({ children }) {
   const [searchHotelResults, setSearchHotelResults] = useState([]);
   const [isSelectedDayCheckOut, setSelectedDayCheckOut] = useState("");
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignUp, setOpenSignUp] = useState(false);
   return (
     <AuthContext.Provider
       value={{
@@ -57,6 +59,8 @@ export function AuthProvider({ children }) {
         busToCity, setBusToCity,
         busdepartureDate, setBusDepartureDate,
         selectedSeats, setSelectedSeats,
+        openLogin, setOpenLogin,
+        openSignUp, setOpenSignUp,
       }}
     >
       {children}
