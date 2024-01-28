@@ -11,8 +11,10 @@ import ModalLogin from "./ModalLogin";
 
 function Navbar() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const UserIcon = localStorage.getItem("photo");
+    const UserName = localStorage.getItem("userName");
     const {
-      openLogin, setOpenLogin
+      openLogin, setOpenLogin,isLoggedIn,
     } = useAuth();
     const [isDropdownhelpOpen, setDropdownhelpOpen] = useState(false);
     const openDropdown = () => {
@@ -86,7 +88,7 @@ function Navbar() {
             />
           </div>
           <div className={Classes.navAcount}>
-          <p>My Account</p>
+          <p>{isLoggedIn? UserName:"My Account"}</p>
                 {isDropdownOpen && (
                   <div className={Classes.dropdownContent}
                   onMouseEnter={openDropdown}
@@ -94,10 +96,12 @@ function Navbar() {
                     >
                     <div className={Classes.accountBox}>
                       <div className={Classes.avatar}>
-                      <Avatar/>
+                      {isLoggedIn? 
+                      <Avatar src={UserIcon}/>
+                    :<Avatar/>}
                         </div>  
                     <div className={Classes.loginBtnSection}>
-                    <button className={Classes.btnLogin} onClick={handleOpenLogin}>LOGIN OR SIGNUP</button>
+                    {isLoggedIn? UserName:<button className={Classes.btnLogin} onClick={handleOpenLogin}>LOGIN OR SIGNUP</button>}
                     </div>
                     
                     <Divider className={Classes.dividerLogin}/>

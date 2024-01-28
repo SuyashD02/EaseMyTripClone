@@ -153,6 +153,7 @@
     flex-direction: column;
     gap: 10px;
     z-index: 1;
+    cursor: default;
    
 
 }
@@ -210,6 +211,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 5px;
+   
 }
 .loginBtnSection{
   display: flex;
@@ -217,6 +219,7 @@
     justify-content: center;
     height: 5vh;
     margin-top: 5px;
+    
     
 }
 .btnLogin{

@@ -6,7 +6,7 @@ import ModalSignUp from "./ModalSignUp";
 function ModalLogin() {
   const handleCloseLogin = () => setOpenLogin(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { openLogin, setOpenLogin,openSignUp, setOpenSignUp } = useAuth();
+  const { openLogin, setOpenLogin,openSignUp, setOpenSignUp, setIsLoggedIn } = useAuth();
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [correctCredential,setCorrectCredential]=useState(false);
@@ -43,13 +43,16 @@ function ModalLogin() {
         const data = await response.json();
         console.log(data);
 
-        // localStorage.setItem("token", data.token);
-        // localStorage.setItem("userId", data.data._id);
-        // localStorage.setItem("userName",data.data.name);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.data._id);
+        localStorage.setItem("userName",data.data.name);
+        localStorage.setItem("photo","https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/590.jpg");
+        setIsLoggedIn(true);
+        handleCloseLogin();
         // if(userMap.has(data.data._id)==false){
          
         // userMap.set(data.data._id,{"name":data.data.name,"photo":"https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/590.jpg"})
-        // }
+        // } 
         
         // setIsLoggedIn(true);
         // navigate("/Main");

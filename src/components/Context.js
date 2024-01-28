@@ -32,6 +32,7 @@ export function AuthProvider({ children }) {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <AuthContext.Provider
       value={{
@@ -61,6 +62,7 @@ export function AuthProvider({ children }) {
         selectedSeats, setSelectedSeats,
         openLogin, setOpenLogin,
         openSignUp, setOpenSignUp,
+        isLoggedIn, setIsLoggedIn,
       }}
     >
       {children}
