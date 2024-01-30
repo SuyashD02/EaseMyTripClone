@@ -25,6 +25,9 @@
     justify-content: center;
     align-items: center;
 }
+.mainDivBusSearch:hover{
+   background-color: #bfdef85d;
+}
 .searchFromBus{
     height: 90%;
     width: 95%;
@@ -53,6 +56,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+ }
+ .searchDepartureBus:hover{
+   background-color: #bfdef85d;
  }
  .inputBus{
     width: 100%;
@@ -210,6 +216,28 @@
     cursor: pointer;
 
 }
+.selectedSeatBus{
+   background: url(https://bus.easemytrip.com/new_img/bus-seat-sprite.png) -337px -93px no-repeat;
+   width: 70px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 8px;
+    font-weight: 800;
+    color: #000;
+    cursor: pointer;
+}
+.selectedSeatBusCh{
+   background: url(https://bus.easemytrip.com/new_img/bus-seat-sprite.png) -171px -49px no-repeat;
+   width: 32px;
+   height: 31px;
+   text-align: center;
+   line-height: 30px;
+   font-size: 8px;
+   font-weight: 800;
+   color: #000;
+   cursor: pointer;
+}
 .selectSeatBusCh{
    background: url(https://bus.easemytrip.com/new_img/bus-seat-sprite.png) -58px -49px no-repeat;
     width: 32px;
@@ -235,4 +263,13 @@
    top: 18px;
    right: 25px;
    cursor: pointer;
+}
+.busDataPage{
+   margin-top: 12px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #FFF;
+    border: 1px solid #E3DFDF;
+    position: sticky;
 }

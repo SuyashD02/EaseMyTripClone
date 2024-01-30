@@ -13,7 +13,7 @@ function FlightLists({ searchResults }) {
     }));
   };
   return (
-    <div className="border border-black border-500 border-solid h-[100%] w-[100%]">
+    <div className="h-[100%] w-[100%]">
       {searchResults &&
         searchResults.map((flightApidata) => (
           <div className={Classes.flightDataBox} key={flightApidata._id}>

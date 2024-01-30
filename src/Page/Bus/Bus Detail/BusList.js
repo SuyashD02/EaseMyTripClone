@@ -13,6 +13,7 @@ function BusList({ searchResultsBus }) {
     setSelectedSeats,
   } = useAuth();
   const [open, setOpen] = useState(false);
+  const [isSelected, setIsSelected] = useState([]);
 
   const handleOpen = (id) => {
     setOpen((prevState) => ({
@@ -33,17 +34,30 @@ function BusList({ searchResultsBus }) {
     } else {
       setSelectedSeats([...selectedSeats, seatName]);
     }
+    // setIsSelected((prevState) => ({
+    //   ...prevState,
+    //   [seatName]: !prevState[seatName]||false,
+    // }));
+    setIsSelected(seatName);
   };
   const handleRemoveSelectSeat = (seatRemove) => {
     if (selectedSeats.includes(seatRemove)) {
       setSelectedSeats(selectedSeats.filter((name) => name !== seatRemove));
     }
+   
   };
 
   const departureDay = moment(busdepartureDate).format("ddd");
   const departureDate = moment(busdepartureDate).format("DD MMM YYYY");
+
+  // const handleSelectedSeat = (id) => {
+  //   setIsSelected((prevState) => ({
+  //     ...prevState,
+  //     [id]: !prevState[id] || false,
+  //   }));
+  // };
   return (
-    <div className="border border-black border-500 border-solid h-[100%] w-[100%]">
+    <div className="h-[100%] w-[100%] mb-[10px]">
       {searchResultsBus.length > 0 ? (
         searchResultsBus.map((BusApidata, index) => (
           <div className={Classes.BusDataBox} key={index}>
@@ -116,9 +130,9 @@ function BusList({ searchResultsBus }) {
                     aria-describedby="modal-modal-description"
                   >
                     <div className={Classes.modalSeatSection}>
-                      <div className="w-[98%] h-[98%] flex justify-between border border-red-500 border-solid ">
+                      <div className="w-[98%] h-[98%] flex justify-between">
                       <div className={Classes.closeBtnBusSeats} onClick={handleClose}></div>
-                        <div className=" border border-orange-500 border-solid w-[70%] flex flex-col items-center">
+                        <div className="w-[70%] flex flex-col items-center">
                           <div className="w-[98%] flex">
                             <div className="flex items-center ">
                               <div className="text-[18px] text-[#000] font-[600] flex items-center ">
@@ -181,12 +195,12 @@ function BusList({ searchResultsBus }) {
                           </div>
                           <div className="w-[98%] bg-[#eeeeee] mt-[10px] flex items-center gap-[10px]">
                             <p className="text-[13px]">Seat Price</p>
-                            <div className="w-[10%] h-[30px] text-[14px] font-[600] rounded-[4px] bg-[#2196f3] text-[#fff] border border-solid border-[#2196f3] flex justify-center items-center">
+                            <div className="w-[10%] h-[30px] text-[14px] font-[600] rounded-[4px] bg-[#2196f3] text-[#fff] flex justify-center items-center">
                               <p>{BusApidata?.fare}</p>
                             </div>
                           </div>
                           <div className="w-[98%]">
-                            <div className="bg-[#fff8c8] text-[#857400] text-[12px] font-[400] rounded-[3px] border border-solid border-[#f3e796] w-[50%] flex items-center justify-center mt-[10px]">
+                            <div className="bg-[#fff8c8] text-[#857400] text-[12px] font-[400] rounded-[3px]  w-[50%] flex items-center justify-center mt-[10px]">
                               <p>
                                 Select your desired seat to continue with your
                                 transaction.{" "}
@@ -205,37 +219,39 @@ function BusList({ searchResultsBus }) {
                             <div className="w-[79%] flex flex-col gap-[2px]">
                               <div className="w-[100%] flex justify-end gap-[8px] mt-[10px]">
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 3")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 3")}
                                 >
+                                  {/* <img  src="https://www.easemytrip.com/images/new-login/home-sub-sprite.png" />
+                                  <img  src="https://www.easemytrip.com/images/new-login/home-sub-sprite.png" /> */}
                                   U 3
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 4")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 4")}
                                 >
                                   U 4
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 9")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 9")}
                                 >
                                   U 9
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 10")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 10")}
                                 >
                                   U 10
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 15")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 15")}
                                 >
                                   U 15
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 16")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 16")}
                                 >
                                   U 16
@@ -243,37 +259,37 @@ function BusList({ searchResultsBus }) {
                               </div>
                               <div className="w-[100%] flex justify-end gap-[8px]">
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 2")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 2")}
                                 >
                                   U 2
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 5")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 5")}
                                 >
                                   U 5
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 8")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 8")}
                                 >
                                   U 8
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 11")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 11")}
                                 >
                                   U 11
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 14")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 14")}
                                 >
                                   U 14
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 17")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 17")}
                                 >
                                   U 17
@@ -281,37 +297,37 @@ function BusList({ searchResultsBus }) {
                               </div>
                               <div className="w-[100%] flex justify-end gap-[8px] mt-[20px] mb-[50px]">
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 1")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 1")}
                                 >
                                   U 1
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 6")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 6")}
                                 >
                                   U 6
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 7")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 7")}
                                 >
                                   U 7
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 12")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 12")}
                                 >
                                   U 12
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 13")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 13")}
                                 >
                                   U 13
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("U 18")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("U 18")}
                                 >
                                   U 18
@@ -326,67 +342,67 @@ function BusList({ searchResultsBus }) {
                             <div className="w-[79%] flex flex-col gap-[2px]">
                               <div className="w-[100%] flex justify-end gap-[8px] mt-[10px]">
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                 className={selectedSeats.includes("1")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("1")}
                                 >
                                   1
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("3")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("3")}
                                 >
                                   3
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("5")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("5")}
                                 >
                                   5
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("7")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("7")}
                                 >
                                   7
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("9")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("9")}
                                 >
                                   9
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("11")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("11")}
                                 >
                                   11
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("13")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("13")}
                                 >
                                   13
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("15")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("15")}
                                 >
                                   15
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("17")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("17")}
                                 >
                                   17
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                 className={selectedSeats.includes("19")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("19")}
                                 >
                                   19
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("21")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("21")}
                                 >
                                   21
@@ -394,67 +410,67 @@ function BusList({ searchResultsBus }) {
                               </div>
                               <div className="w-[100%] flex justify-end gap-[8px]">
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("2")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("2")}
                                 >
                                   2
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("4")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("4")}
                                 >
                                   4
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("6")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("6")}
                                 >
                                   6
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("8")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("8")}
                                 >
                                   8
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("10")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("10")}
                                 >
                                   10
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("12")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("12")}
                                 >
                                   12
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("14")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("14")}
                                 >
                                   14
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("16")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("16")}
                                 >
                                   16
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("18")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("18")}
                                 >
                                   18
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("20")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("20")}
                                 >
                                   20
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBusCh}
+                                  className={selectedSeats.includes("22")?Classes.selectedSeatBusCh:Classes.selectSeatBusCh}
                                   onClick={() => handleSelectSeat("22")}
                                 >
                                   22
@@ -462,37 +478,37 @@ function BusList({ searchResultsBus }) {
                               </div>
                               <div className="w-[100%] flex justify-end gap-[8px] mt-[20px] mb-[50px]">
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("L 1")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("L 1")}
                                 >
                                   L 1
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("L 2")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("L 2")}
                                 >
                                   L 2
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("L 3")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("L 3")}
                                 >
                                   L 3
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("L 4")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("L 4")}
                                 >
                                   L 4
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("L 5")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("L 5")}
                                 >
                                   L 5
                                 </div>
                                 <div
-                                  className={Classes.selectSeatBus}
+                                  className={selectedSeats.includes("L 6")?Classes.selectedSeatBus:Classes.selectSeatBus}
                                   onClick={() => handleSelectSeat("L 6")}
                                 >
                                   L 6
@@ -501,7 +517,7 @@ function BusList({ searchResultsBus }) {
                             </div>
                           </div>
                         </div>
-                        <div className=" border border-blue-500 border-solid w-[29.5%]">
+                        <div className="w-[29.5%]">
                           <div className="w-[100%] bg-[#eee] rounded-[5px] flex flex-col items-center">
                             <div className="w-[95%] text-[15px] text-[#000] mt-[20px]">
                               <p>Boarding Point</p>
@@ -603,7 +619,7 @@ function BusList({ searchResultsBus }) {
         ))
       ) : (
         <p className="font-[600] text-[#000] text-[22px] flex justify-center items-center">
-          No Trains Available For the Selected Day
+          No Bus Available For the Selected Day
         </p>
       )}
     </div>

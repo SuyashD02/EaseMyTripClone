@@ -80,3 +80,59 @@
     flex-direction: column;
     overflow: hidden;
 }
+/* Fliter Data */
+
+.flightDataPage{
+    margin-top: 12px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #FFF;
+    position: sticky;
+}
+.flightDataDeparture ul{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.flightDataDeparture ul li{
+    list-style: none;
+    font-size: 9px;
+    font-weight: 600;
+    height: 64px;
+    width: 56px;
+    border: .7px solid #dfdfdf;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .filterImageSun{
+    margin-top: 5px;
+    width: 28px;
+    height: 25px;
+    background: url(https://flight.easemytrip.com/Content/CSS/filter-sprite.png);
+    background-position: -5px -42px;
+  }
+  .filterImageMid{
+    margin-top: 5px;
+    width: 24px;
+    height: 25px;
+    background: url(https://flight.easemytrip.com/Content/CSS/filter-sprite.png);
+    background-position: -38px -43px;
+  }
+  .filterImageEve{
+    margin-top: 5px;
+    width: 20px;
+    height: 25px;
+    background: url(https://flight.easemytrip.com/Content/CSS/filter-sprite.png);
+    background-position: -66px -42px;
+  }
+  .filterImageNight{
+    margin-top: 5px;
+    width: 16px;
+    height: 25px;
+    background: url(https://flight.easemytrip.com/Content/CSS/filter-sprite.png);
+    background-position: -95px -43px;
+  }

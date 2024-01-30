@@ -63,5 +63,13 @@
     padding: 12px 5px;
     cursor: pointer;
  }
-
+.trainDataPage{
+    margin-top: 12px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #FFF;
+    border: 1px solid #E3DFDF;
+    position: sticky;
+}
  

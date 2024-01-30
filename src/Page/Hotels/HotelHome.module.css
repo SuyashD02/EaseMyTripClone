@@ -42,6 +42,9 @@
     justify-content: center;
     align-items: center;
 }
+.mainDivSearch:hover{
+    background-color: #bfdef85d;
+}
 .searchFrom{
     height: 90%;
     width: 95%;
@@ -97,6 +100,9 @@
     align-items: center;
     
 }
+.hotelhomesSectionCheckIn:hover{
+    background-color: #bfdef85d;
+}
 
 .hotelhomeCheckIn{
     
@@ -125,6 +131,9 @@
     
    
 }
+.searchReturn:hover{
+    background-color: #bfdef85d;
+}
 .searchTraveller{
     height: 100%;
     width: 14vw;
@@ -132,6 +141,9 @@
     justify-content: center;
     align-items: center;
     
+}
+.searchTraveller:hover{
+    background-color: #bfdef85d;
 }
 .hotelChooseRooms{
     width: 92%;

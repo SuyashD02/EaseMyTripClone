@@ -21,6 +21,10 @@ function FlightsRecords() {
   } = useAuth();
   const [searchResults, setSearchResults] = useState([]);
   const [errorPost, setErrorPost] = useState("");
+  const [sliderValue, setSliderValue] = useState(1000);
+  const [value, setValue] = useState("");
+  const [field, setField] = useState("");
+
   const CustomInput = ({ value, onClick }) => (
     <input
       type="text"
@@ -42,7 +46,7 @@ function FlightsRecords() {
     try {
       const projectID = "2zqsmiro66wm";
       const dayAbbreviation = moment(flightdepartureDate).format("ddd");
-      const apiUrl = `https://academics.newtonschool.co/api/v1/bookingportals/flight?search={"source":"${AirportFrom[2]}","destination":"${AirportTo[2]}"}&day=${dayAbbreviation}`;
+      const apiUrl = `https://academics.newtonschool.co/api/v1/bookingportals/flight?day=${dayAbbreviation}&search={"source":"${AirportFrom[2]}","destination":"${AirportTo[2]}"}&filter={"${field}":{"${value}":${sliderValue}}}`;
       const response = await fetch(apiUrl, {
         method: "GET",
         headers: {
@@ -65,7 +69,20 @@ function FlightsRecords() {
   }
   useEffect(() => {
     handleSearch();
-  }, []);
+  }, [sliderValue]);
+
+  const handleSliderChange = (event) => {
+    setSliderValue(event.target.value);
+  };
+  const handleCheckboxRatingChange = (value) => {
+    setSliderValue(value === sliderValue ? null : value);
+  };
+
+  const handleClickSet = (type, key, data) => {
+    setField(type);
+    setValue(key);
+    setSliderValue(data);
+  };
   return (
     <div>
       <Navbar />
@@ -154,14 +171,234 @@ function FlightsRecords() {
           </div>
         </div>
       </div>
-      <div className="w-[100%] h-[100%] bg-[#e8f2fa] border border-black border-500 border-solid flex justify-center">
-        <div className="w-[80%] h-[100%] border border-blue-500 border-solid flex flex-row gap-[20px]">
-            <div className="w-[20%] border border-orange-500 border-solid flex flex-col"></div>
-            <div className="w-[79%] h-[100%] border border-red-500 border-solid">
-                <FlightLists searchResults={searchResults}/>
-            </div>
-        </div>
+      <div className="w-[100%] h-[100%] bg-[#e8f2fa] flex justify-center">
+        <div className="w-[80%] h-[100%] flex flex-row gap-[20px]">
+          <div className="w-[20%] flex flex-col">
+            <div className={Classes.flightDataPage}>
+              <div className="text-[#000] text-[14px] font-[600] ">
+                <p> FILTER </p>
+              </div>
 
+              <div className="mt-[20px] flex flex-col">
+                <label
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    marginBottom: "20px",
+                  }}
+                  for="slider"
+                >
+                  One Way Price
+                </label>
+                <input
+                  type="range"
+                  id="slider"
+                  name="slider"
+                  min="0"
+                  max="2500"
+                  value={sliderValue}
+                  onChange={handleSliderChange}
+                  onClick={() => handleClickSet("ticketPrice", "$gte")}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "space-between",
+                    marginTop: "10px",
+                  }}
+                >
+                  <p>Min: 0</p> <p>&#8377; {sliderValue}</p> <p>Max: 2500</p>
+                </div>
+              </div>
+              <div className="mt-[30px]">
+                <p className="text-[#000] text-[14px] font-[600] ">
+                  Stops From {AirportFrom[0]}
+                </p>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="0"
+                      checked={sliderValue === "0"}
+                      onChange={() => handleCheckboxRatingChange("0")}
+                      onClick={() => handleClickSet("stops", "$eq", "0")}
+                    />
+                    <label>Non Stop</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="1"
+                      checked={sliderValue === "1"}
+                      onChange={() => handleCheckboxRatingChange("1")}
+                      onClick={() => handleClickSet("stops", "$eq", "1")}
+                    />
+                    <label>1 Stop</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="2"
+                      checked={sliderValue === "2"}
+                      onChange={() => handleCheckboxRatingChange("2")}
+                      onClick={() => handleClickSet("stops", "$eq", "2")}
+                    />
+                    <label>2 Stop</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+              </div>
+              <div className="mt-[30px]">
+                <p className="text-[#000] text-[14px] font-[600] ">Duration</p>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="1"
+                      checked={sliderValue === "1"}
+                      onChange={() => handleCheckboxRatingChange("1")}
+                      onClick={() => handleClickSet("duration", "$eq", "1")}
+                    />
+                    <label>1 hour</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="2"
+                      checked={sliderValue === "2"}
+                      onChange={() => handleCheckboxRatingChange("2")}
+                      onClick={() => handleClickSet("duration", "$eq", "2")}
+                    />
+                    <label>2 hour</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="3"
+                      checked={sliderValue === "3"}
+                      onChange={() => handleCheckboxRatingChange("3")}
+                      onClick={() => handleClickSet("duration", "$eq", "3")}
+                    />
+                    <label>3 hour</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="4"
+                      checked={sliderValue === "4"}
+                      onChange={() => handleCheckboxRatingChange("4")}
+                      onClick={() => handleClickSet("duration", "$eq", "4")}
+                    />
+                    <label>4 hour</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="5"
+                      checked={sliderValue === "5"}
+                      onChange={() => handleCheckboxRatingChange("5")}
+                      onClick={() => handleClickSet("duration", "$eq", "5")}
+                    />
+                    <label>5 hour</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      value="6"
+                      checked={sliderValue === "6"}
+                      onChange={() => handleCheckboxRatingChange("6")}
+                      onClick={() => handleClickSet("duration", "$eq", "6")}
+                    />
+                    <label>6 hour</label>
+                  </div>
+                  <p style={{ marginTop: "10px" }}></p>
+                </div>
+              </div>
+              <div className="mt-[30px]">
+                <p className="text-[#000] text-[14px] font-[600] ">
+                  Departure From {AirportFrom[0]}
+                </p>
+                <div className="w-[100%]">
+                  <div className="w-[100%] border border-solid border-[#e0e0e0] bg-[#fff] mt-[5px] rounded-[5px] flex">
+                    <div
+                      className="w-[25%] border border-solid border-[#e0e0e0] cursor-pointer flex flex-col justify-center items-center"
+                      onClick={() =>
+                        handleClickSet("departureTime", "$lt", "6")
+                      }
+                    >
+                      <div className={Classes.filterImageSun}></div>
+                      <div className="w-[100%] text-[#737373] text-[10px] items-center flex flex-col justify-center">
+                        <span> Before </span>
+                        <span> 6 AM</span>
+                      </div>
+                    </div>
+                    <div
+                      className="w-[25%] border border-solid border-[#e0e0e0] cursor-pointer flex flex-col justify-center items-center"
+                      onClick={() =>
+                        handleClickSet("departureTime", "$lte", "12")
+                      }
+                    >
+                      <div className={Classes.filterImageMid}></div>
+                      <div className="w-[100%] text-[#737373] text-[10px] items-center flex flex-col justify-center">
+                        <span>6 AM -</span>
+                        <span> 12 PM</span>
+                      </div>
+                    </div>
+                    <div
+                      className="w-[25%] border border-solid border-[#e0e0e0] cursor-pointer flex flex-col justify-center items-center"
+                      onClick={() =>
+                        handleClickSet("departureTime", "$lte", "18")
+                      }
+                    >
+                      <div className={Classes.filterImageEve}></div>
+                      <div className="w-[100%] text-[#737373] text-[10px] items-center flex flex-col justify-center">
+                        <span>12 PM -</span>
+                        <span> 6 PM</span>
+                      </div>
+                    </div>
+                    <div
+                      className="w-[25%] border border-solid border-[#e0e0e0] cursor-pointer flex flex-col justify-center items-center"
+                      onClick={() =>
+                        handleClickSet("departureTime", "$gte", "18")
+                      }
+                    >
+                      <div className={Classes.filterImageNight}></div>
+                      <div className="w-[100%] text-[#737373] text-[10px] items-center flex flex-col justify-center">
+                        <span> After</span>
+                        <span> 6 PM</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-[79%] h-[100%] ">
+            <FlightLists searchResults={searchResults} />
+          </div>
+        </div>
       </div>
     </div>
   );

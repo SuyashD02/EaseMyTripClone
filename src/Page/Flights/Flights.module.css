@@ -76,6 +76,9 @@
     justify-content: center;
     align-items: center;
 }
+.searchDepartureFlight:hover{
+    background-color: #bfdef85d;
+}
 .flighthomeDeparture{
     width: 92%;
     height: 90%;
@@ -98,6 +101,7 @@
 .inputFlight:focus{
     outline: none;
 }
+
 /* till yet complete */
 .searchReturn{
     height: 12vh;

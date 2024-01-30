@@ -14,6 +14,16 @@ function BusDetail(){
     const [busDetailToOpen, setBusDetailToOpen] = useState(false);
     const [searchResultsBus, setSearchResultsBus] = useState([]);
   const [errorPost, setErrorPost] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [sliderValue, setSliderValue] = useState(2000);
+
+  const handleCheckboxRatingChange = (value) => {
+    setSelectedOption(value === selectedOption ? null : value);
+  };
+
+  const handleSliderChange = (event) => {
+    setSliderValue(event.target.value);
+  };
     const CustomInput = ({ value, onClick }) => (
         <input
           type="text"
@@ -119,9 +129,124 @@ function BusDetail(){
           </div>
         </div>
       </div>
-      <div className="w-[100%] h-[100%] bg-[#e8f2fa] border border-black border-500 border-solid flex justify-center">
-        <div className="w-[80%] h-[100%] border border-blue-500 border-solid flex flex-row gap-[20px]">
-            <div className="w-[20%] border border-orange-500 border-solid flex flex-col"></div>
+      <div className="w-[100%] h-[100%] bg-[#e8f2fa] flex justify-center">
+        <div className="w-[80%] h-[100%] flex flex-row gap-[20px]">
+            <div className="w-[20%] flex flex-col">
+            <div className={Classes.busDataPage}>
+              <div className="text-[#000] text-[14px] font-[600] ">
+              <p>Filter By</p>
+              </div>
+              
+            <div className="mt-[20px] flex flex-col">
+              <label
+                style={{
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                  marginBottom: "20px",
+                }}
+                for="slider"
+              >
+                One Way Price
+              </label>
+              <input
+                type="range"
+                id="slider"
+                name="slider"
+                min="400"
+                max="25000"
+                value={sliderValue}
+                onChange={handleSliderChange}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  justifyContent: "space-between",
+                  marginTop: "10px",
+                }}
+              >
+                <p className="text-[#000] text-[12px]">Min: 400</p> <p className="text-[#000] text-[12px]">&#8377; {sliderValue}</p> <p className="text-[#000] text-[12px]">Max: 25000</p>
+              </div>
+            </div>
+            <div className="mt-[30px]">
+              <p className="text-[#000] text-[12px] font-[600] ">Stops From {busCity}</p>
+              <div className="flex justify-between">
+                <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                  <input type="checkbox" />
+                  <label>Non Stop</label>
+                </div>
+                <p style={{ marginTop: "10px" }}></p>
+              </div>
+              <div className="flex justify-between">
+                <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                  <input type="checkbox" />
+                  <label>1 Stop</label>
+                </div>
+                <p style={{ marginTop: "10px" }}></p>
+              </div>
+              <div className="flex justify-between">
+                <div className="mt-[10px] flex gap-[5px] text-[12px] font-[400] text-[#333] cursor-pointer">
+                  <input type="checkbox" />
+                  <label>2 Stop</label>
+                </div>
+                <p style={{ marginTop: "10px" }}></p>
+              </div>
+            </div>
+            
+            <div className="mt-[30px]">
+              <p className="text-[#000] text-[12px] font-[600] ">Departure From {busToCity}</p>
+              <div className="w-[100%]">
+                <div className="w-[100%] bg-[#fff] mt-[5px] rounded-[5px] flex flex-col gap-[10px]">
+                <div className="w-[100%] cursor-pointer flex flex-col mt-[10px]">
+                  <label className="flex text-[12px] text-[#737373] items-center gap-[5px]">
+                    <input
+                      type="checkbox"
+                      value="12"
+                      checked={selectedOption === "12"}
+                      onChange={() => handleCheckboxRatingChange("12")}
+                    />{" "}
+                    <span className="flex gap-[10px] items-center">Early Morning <span>12am - 6am</span></span>
+                  </label>
+                  </div>
+                  <div className="w-[100%] cursor-pointer flex flex-col">
+                  <label className="flex text-[12px] text-[#737373] items-center gap-[5px]">
+                    <input
+                      type="checkbox"
+                      value="6"
+                      checked={selectedOption === "6"}
+                      onChange={() => handleCheckboxRatingChange("6")}
+                    />{" "}
+                    <span className="flex gap-[10px] items-center">Morning <span>6am - 12pm</span></span>
+                  </label>
+                  </div>
+                  <div className="w-[100%] cursor-pointer flex flex-col">
+                  <label className="flex text-[12px] text-[#737373] items-center gap-[5px]">
+                    <input
+                      type="checkbox"
+                      value="18"
+                      checked={selectedOption === "18"}
+                      onChange={() => handleCheckboxRatingChange("18")}
+                    />{" "}
+                    <span className="flex gap-[10px] items-center">Afternoon <span>12pm - 6pm</span></span>
+                  </label>
+                  </div>
+                  <div className="w-[100%] cursor-pointer flex flex-col">
+                  <label className="flex text-[12px] text-[#737373] items-center gap-[5px]">
+                    <input
+                      type="checkbox"
+                      value="24"
+                      checked={selectedOption === "24"}
+                      onChange={() => handleCheckboxRatingChange("24")}
+                    />{" "}
+                    <span className="flex gap-[10px] items-center">Night <span>6pm - 12am</span></span>
+                    
+                  </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            </div>
             <div className="w-[79%] h-[100%]">
                 <BusList searchResultsBus={searchResultsBus}/>
             </div>

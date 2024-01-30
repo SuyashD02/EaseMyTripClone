@@ -38,7 +38,7 @@ function Train(){
     useEffect(() => {
         const fetchOffers = async () => {
           try {
-            const yourProjectID = "wan6hnsnhwfn";
+            const yourProjectID = "2zqsmiro66wm";
             const response = await fetch(
               `https://academics.newtonschool.co/api/v1/bookingportals/offers?filter={"type":"${selectedOfferType}"}`,
               {
@@ -119,6 +119,7 @@ function Train(){
 
           <Divider orientation="vertical" />
           <div className={Classes.searchDepartureTrain}>
+            
             <div className={Classes.trainhomeDeparture}>
               <div className={Classes.departureHeading}>
                 <img src="https://www.easemytrip.com/images/hotel-img/hp_icon_2.png" />

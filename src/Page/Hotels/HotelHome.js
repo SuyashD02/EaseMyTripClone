@@ -111,7 +111,7 @@ function HotelHome() {
   useEffect(() => {
     const fetchOffers = async () => {
       try {
-        const yourProjectID = "wan6hnsnhwfn";
+        const yourProjectID = "2zqsmiro66wm";
         const response = await fetch(
           `https://academics.newtonschool.co/api/v1/bookingportals/offers?filter={"type":"${selectedOfferType}"}`,
           {

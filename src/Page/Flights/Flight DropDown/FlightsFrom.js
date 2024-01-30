@@ -21,13 +21,13 @@ const FlightFrom = ({ onclose }) => {
 
   useEffect(() => {
     const api = `https://academics.newtonschool.co/api/v1/bookingportals/airport?search={"city":"${airport}"}`;
-    const projectId = "wan6hnsnhwfn";
+    
 
     const fetchData = () => {
       fetch(api, {
         method: "GET",
         headers: {
-          projectID: projectId,
+          projectID: "2zqsmiro66wm",
         },
       })
         .then((response) => {
