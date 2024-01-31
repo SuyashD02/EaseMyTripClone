@@ -14,7 +14,7 @@ function FlightLists({ searchResults }) {
   };
   return (
     <div className="h-[100%] w-[100%]">
-      {searchResults &&
+      {searchResults.length > 0 ? (
         searchResults.map((flightApidata) => (
           <div className={Classes.flightDataBox} key={flightApidata._id}>
             <div className="w-[100%] h-[100px] flex justify-center items-center">
@@ -67,7 +67,10 @@ function FlightLists({ searchResults }) {
             </div>
             {flightDetailOpen[flightApidata._id] && <FlightDetail/>}
           </div>
-        ))}
+        ))
+        ) : (
+          <p className="font-[600] text-[#000] text-[22px] flex justify-center items-center" >No Flight Available For the Selected Day</p>
+        )}
     </div>
   );
 }

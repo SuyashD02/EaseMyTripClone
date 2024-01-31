@@ -30,16 +30,12 @@ function Hotels() {
   const [originalHotelData, setOriginalHotelData] = useState([]);
   const [hotelErrorPost, setHotelErrorPost] = useState("");
   const [sortOption, setSortOption] = useState("");
-  const [selectedRating, setSelectedRating] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedPriceRange, setSelectedPriceRange] = useState("");
-  const [selectedRoomTypes, setSelectedRoomTypes] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
-  var lowerPrice;
-  var highPrice;
-  const handleCheckboxRatingChange = (value) => {
-    setSelectedOption(value === selectedOption ? null : value);
-  };
+  
+  const [selectedOption, setSelectedOption] = useState(0);
+  const [value, setValue] = useState("$gte");
+  const [field, setField] = useState("rating");
+  
+
   const CustomInput = ({ value, onClick }) => (
     <input
       className={Classes.hotelInputDatepickIn}
@@ -59,10 +55,6 @@ function Hotels() {
     />
   );
 
-  // const getPrice = (item) =>
-  //   item.rooms[0]?.costDetails?.baseCost || item.rooms[0]?.costPerNight;
-  const getPrice = (item) => item.rooms[0]?.price;
-
   async function handleHotelSearch() {
     console.log("Hotel Search Function Called");
     if (isFetching || (initialApiCallMade && page < 1)) {
@@ -72,25 +64,7 @@ function Hotels() {
       setIsFetching(true);
       const projectID = "2zqsmiro66wm";
       const formattedDate = moment(hotelDepartureDate).format("dddd");
-      const filterOptions = {};
-
-      // if (selectedRating !== null) {
-      //   filterOptions.rating = selectedRating;
-      // }
-
-      // if (selectedPriceRange !== null) {
-      //   filterOptions.rooms = [{}];
-      //   filterOptions.rooms.price= {
-      //     $gte: selectedPriceRange.min,
-      //     $lte: selectedPriceRange.max,
-      //   };
-      // }
-
-      // if (selectedRoomTypes.length > 0) {
-      //   filterOptions.roomType = { $in: selectedRoomTypes };
-      // }
-
-      let apiUrlHotel = `https://academics.newtonschool.co/api/v1/bookingportals/hotel?limit=10&page=${page}&search={"location":"${hotelLocation}"}&day="${formattedDate}"`;
+      let apiUrlHotel = `https://academics.newtonschool.co/api/v1/bookingportals/hotel?search={"location":"${hotelLocation}"}&day="${formattedDate}"&filter={"${field}":{"${value}":${selectedOption}}}&limit=10&page=${page}`;
       const response = await fetch(apiUrlHotel, {
         method: "GET",
         headers: {
@@ -145,50 +119,19 @@ function Hotels() {
   const handleSetLocation = (e) => {
     setHotelLocation(e.target.value);
   };
-
-  const handleRatingFilter = () => {
-    setSelectedRating(selectedRating === null ? 5 : null); // Change 5 to the desired default rating
+  const handleCheckboxRatingChange = (value) => {
+    setSelectedOption(value === selectedOption ? 0 : value);
   };
 
-  const handleSelectClick = () => {
-    setIsOpen(!isOpen);
+  const handleClickSet = (type, key, data) => {
+    setField(type);
+    setValue(key === value ? "$gte":key);
+    setSelectedOption(data);
+    setPage(1);
+    setSearchHotelResults([]);
+    // handleHotelSearch();
   };
-
-  const handlePriceFilter = (low, high) => {};
-
-  const handleRoomTypeFilter = () => {
-    // Implement logic to fetch room types from the API and update the state
-    // Example: setSelectedRoomTypes(["Single", "Double"]);
-  };
-
-  function handleCheckboxChange(e) {
-    const checkboxId = e.target.id;
-    const isChecked = e.target.checked;
-
-    switch (checkboxId) {
-      case "priceCheckbox1":
-        isChecked ? filterByPriceRange(0, 3000) : resetFilters();
-        break;
-      case "priceCheckbox2":
-        isChecked ? filterByPriceRange(3001, 5000) : resetFilters();
-        break;
-      case "priceCheckbox3":
-        isChecked ? filterByPriceRange(5001, 10000) : resetFilters();
-        break;
-      default:
-        resetFilters();
-        break;
-    }
-  }
-  function filterByPriceRange(minPrice, maxPrice) {
-    lowerPrice = minPrice;
-    highPrice = maxPrice;
-    setSearchHotelResults(
-      searchHotelResults.filter(
-        (a) => getPrice(a) >= minPrice && getPrice(a) <= maxPrice
-      )
-    );
-  }
+  
   function resetFilters() {
     setSearchHotelResults([...originalHotelData]);
   }
@@ -205,11 +148,9 @@ function Hotels() {
   // };
   useEffect(() => {
     handleHotelSearch();
-  }, []);
+    setPage(1);
+  }, [selectedOption,field,value]);
 
-  const handleOpenDropdown = () => {
-    setIsOpen(true);
-  };
   const handleSearch = () => {
     setSearchHotelResults([]);
     handleHotelSearch();
@@ -290,11 +231,6 @@ function Hotels() {
             <option value="priceDesc">Price (High to Low)</option>
             <option value="rating">Customer Ratings</option>
           </select>
-          {/* <select name="selectedFruit" defaultValue="orange">
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
-        <option value="orange">Orange</option>
-      </select> */}
         </div>
       </div>
 
@@ -321,65 +257,75 @@ function Hotels() {
                   <label className={Classes.lableHotelPrice}>
                     <input
                       type="checkbox"
-                      id="priceCheckbox1"
-                      onChange={handleCheckboxChange}
+                      value="2000"
+                      checked={selectedOption === 2000}
+                      onChange={() => handleCheckboxRatingChange(2000)}
+                      onClick={() => handleClickSet("avgCostPerNight", "$lte", 2000)}
                     />{" "}
                     <img
                       className={Classes.hotelINRLogo}
                       src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_grey.svg"
                     />{" "}
-                    0 - ₹ 3000
+                    Below - ₹ 2000
                   </label>
                   <label className={Classes.lableHotelPrice}>
                     <input
                       type="checkbox"
-                      id="priceCheckbox2"
-                      onChange={handleCheckboxChange}
+                      value="3000"
+                      checked={selectedOption === 3000}
+                      onChange={() => handleCheckboxRatingChange(3000)}
+                      onClick={() => handleClickSet("avgCostPerNight", "$lte", 3000)}
                     />{" "}
                     <img
                       className={Classes.hotelINRLogo}
                       src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_grey.svg"
                     />{" "}
-                    3001 - ₹ 5000
-                  </label>
-
-                  <label className={Classes.lableHotelPrice}>
-                    <input
-                      type="checkbox"
-                      id="priceCheckbox3"
-                      onChange={handleCheckboxChange}
-                    />{" "}
-                    <img
-                      className={Classes.hotelINRLogo}
-                      src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_grey.svg"
-                    />{" "}
-                    5001 - ₹ 10000
+                    ₹ 2001 - ₹ 3000
                   </label>
 
                   <label className={Classes.lableHotelPrice}>
                     <input
                       type="checkbox"
-                      id="priceCheckbox5"
-                      onChange={handleCheckboxChange}
+                      value="5000"
+                      checked={selectedOption === 5000}
+                      onChange={() => handleCheckboxRatingChange(5000)}
+                      onClick={() => handleClickSet("avgCostPerNight", "$lte", 5000)}
                     />{" "}
                     <img
                       className={Classes.hotelINRLogo}
                       src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_grey.svg"
                     />{" "}
-                    10001 - ₹ 15000
+                    ₹ 3001 - ₹ 5000
                   </label>
 
                   <label className={Classes.lableHotelPrice}>
                     <input
                       type="checkbox"
-                      id="priceCheckbox6"
-                      onChange={handleCheckboxChange}
+                      value="5001"
+                      checked={selectedOption === 5001}
+                      onChange={() => handleCheckboxRatingChange(5001)}
+                      onClick={() => handleClickSet("avgCostPerNight", "$gte", 5001)}
                     />{" "}
                     <img
                       className={Classes.hotelINRLogo}
                       src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_grey.svg"
                     />{" "}
-                    15001 - ₹ 20000
+                    ₹ 5001 - ₹ 8000
+                  </label>
+
+                  <label className={Classes.lableHotelPrice}>
+                    <input
+                      type="checkbox"
+                      value="8000"
+                      checked={selectedOption === 8000}
+                      onChange={() => handleCheckboxRatingChange(8000)}
+                      onClick={() => handleClickSet("avgCostPerNight", "$gte", 8000)}
+                    />{" "}
+                    <img
+                      className={Classes.hotelINRLogo}
+                      src="https://hotels.easemytrip.com/newhotel/Content/img/rupee_new_grey.svg"
+                    />{" "}
+                    above - ₹ 8000
                   </label>
                 </div>
               </div>
@@ -388,12 +334,23 @@ function Hotels() {
                   <h3>User Rating</h3>
                 </div>
                 <div className={Classes.filterHotelPriceCheckBoxDiv}>
+                <label className={Classes.lableHotelPrice}>
+                    <input
+                      type="checkbox"
+                      value="5"
+                      checked={selectedOption === 5}
+                      onChange={() => handleCheckboxRatingChange(5)}
+                      onClick={() => handleClickSet("rating", "$eq", 5)}
+                    />{" "}
+                    Excellent: 5
+                  </label>
                   <label className={Classes.lableHotelPrice}>
                     <input
                       type="checkbox"
                       value="4.5"
-                      checked={selectedOption === "4.5"}
-                      onChange={() => handleCheckboxRatingChange("4.5")}
+                      checked={selectedOption === 4.5}
+                      onChange={() => handleCheckboxRatingChange(4.5)}
+                      onClick={() => handleClickSet("rating", "$eq", 4.5)}
                     />{" "}
                     Excellent: 4.5+
                   </label>
@@ -401,8 +358,9 @@ function Hotels() {
                     <input
                       type="checkbox"
                       value="4"
-                      checked={selectedOption === "4"}
-                      onChange={() => handleCheckboxRatingChange("4")}
+                      checked={selectedOption === 4}
+                      onChange={() => handleCheckboxRatingChange(4)}
+                      onClick={() => handleClickSet("rating", "$eq", 4)}
                     />{" "}
                     Very Good: 4+
                   </label>
@@ -410,8 +368,9 @@ function Hotels() {
                     <input
                       type="checkbox"
                       value="3.5"
-                      checked={selectedOption === "3.5"}
-                      onChange={() => handleCheckboxRatingChange("3.5")}
+                      checked={selectedOption === 3.5}
+                      onChange={() => handleCheckboxRatingChange(3.5)}
+                      onClick={() => handleClickSet("rating", "$eq", 3.5)}
                     />{" "}
                     Good: 3.5+
                   </label>
@@ -420,8 +379,9 @@ function Hotels() {
                     <input
                       type="checkbox"
                       value="3"
-                      checked={selectedOption === "3"}
-                      onChange={() => handleCheckboxRatingChange("3")}
+                      checked={selectedOption === 3}
+                      onChange={() => handleCheckboxRatingChange(3)}
+                      onClick={() => handleClickSet("rating", "$eq", 3)}
                     />{" "}
                     Average: 3+
                   </label>

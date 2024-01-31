@@ -21,9 +21,9 @@ function FlightsRecords() {
   } = useAuth();
   const [searchResults, setSearchResults] = useState([]);
   const [errorPost, setErrorPost] = useState("");
-  const [sliderValue, setSliderValue] = useState(1000);
-  const [value, setValue] = useState("");
-  const [field, setField] = useState("");
+  const [sliderValue, setSliderValue] = useState(100);
+  const [value, setValue] = useState("$gte");
+  const [field, setField] = useState("ticketPrice");
 
   const CustomInput = ({ value, onClick }) => (
     <input
@@ -67,6 +67,8 @@ function FlightsRecords() {
       setErrorPost("An error occurred. Please try again.");
     }
   }
+
+  
   useEffect(() => {
     handleSearch();
   }, [sliderValue]);
@@ -208,7 +210,7 @@ function FlightsRecords() {
                     marginTop: "10px",
                   }}
                 >
-                  <p>Min: 0</p> <p>&#8377; {sliderValue}</p> <p>Max: 2500</p>
+                  <p>Min: 0</p> <p>Max: 2500</p>
                 </div>
               </div>
               <div className="mt-[30px]">
@@ -262,9 +264,9 @@ function FlightsRecords() {
                     <input
                       type="checkbox"
                       value="1"
-                      checked={sliderValue === "1"}
-                      onChange={() => handleCheckboxRatingChange("1")}
-                      onClick={() => handleClickSet("duration", "$eq", "1")}
+                      checked={sliderValue === 1}
+                      onChange={() => handleCheckboxRatingChange(1)}
+                      onClick={() => handleClickSet("duration", "$eq", 1)}
                     />
                     <label>1 hour</label>
                   </div>
@@ -275,9 +277,9 @@ function FlightsRecords() {
                     <input
                       type="checkbox"
                       value="2"
-                      checked={sliderValue === "2"}
-                      onChange={() => handleCheckboxRatingChange("2")}
-                      onClick={() => handleClickSet("duration", "$eq", "2")}
+                      checked={sliderValue === 2}
+                      onChange={() => handleCheckboxRatingChange(2)}
+                      onClick={() => handleClickSet("duration", "$eq", 2)}
                     />
                     <label>2 hour</label>
                   </div>
@@ -288,9 +290,9 @@ function FlightsRecords() {
                     <input
                       type="checkbox"
                       value="3"
-                      checked={sliderValue === "3"}
-                      onChange={() => handleCheckboxRatingChange("3")}
-                      onClick={() => handleClickSet("duration", "$eq", "3")}
+                      checked={sliderValue === 3}
+                      onChange={() => handleCheckboxRatingChange(3)}
+                      onClick={() => handleClickSet("duration", "$eq", 3)}
                     />
                     <label>3 hour</label>
                   </div>
@@ -301,9 +303,9 @@ function FlightsRecords() {
                     <input
                       type="checkbox"
                       value="4"
-                      checked={sliderValue === "4"}
-                      onChange={() => handleCheckboxRatingChange("4")}
-                      onClick={() => handleClickSet("duration", "$eq", "4")}
+                      checked={sliderValue === 4}
+                      onChange={() => handleCheckboxRatingChange(4)}
+                      onClick={() => handleClickSet("duration", "$eq", 4)}
                     />
                     <label>4 hour</label>
                   </div>
@@ -314,9 +316,9 @@ function FlightsRecords() {
                     <input
                       type="checkbox"
                       value="5"
-                      checked={sliderValue === "5"}
-                      onChange={() => handleCheckboxRatingChange("5")}
-                      onClick={() => handleClickSet("duration", "$eq", "5")}
+                      checked={sliderValue === 5}
+                      onChange={() => handleCheckboxRatingChange(5)}
+                      onClick={() => handleClickSet("duration", "$eq", 5)}
                     />
                     <label>5 hour</label>
                   </div>
@@ -327,9 +329,9 @@ function FlightsRecords() {
                     <input
                       type="checkbox"
                       value="6"
-                      checked={sliderValue === "6"}
-                      onChange={() => handleCheckboxRatingChange("6")}
-                      onClick={() => handleClickSet("duration", "$eq", "6")}
+                      checked={sliderValue === 6}
+                      onChange={() => handleCheckboxRatingChange(6)}
+                      onClick={() => handleClickSet("duration", "$eq", 6)}
                     />
                     <label>6 hour</label>
                   </div>
