@@ -13,6 +13,7 @@ export function AuthProvider({ children }) {
   const [busdepartureDate, setBusDepartureDate] = useState("");
   const [hotelId, setHotelId] = useState("");
   const [flightId, setFlightId] = useState("");
+
   const [trainCity, setTrainCity] = useState(["New Delhi"]);
   const [trainToCity, setTrainToCity] = useState(["Pune Junction"]);
   const [busCity, setBusCity] = useState(["Mumbai, Maharashtra"]);
@@ -33,6 +34,7 @@ export function AuthProvider({ children }) {
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [flightBookingId, setFlightBookingId] = useState("");
   return (
     <AuthContext.Provider
       value={{
@@ -63,6 +65,7 @@ export function AuthProvider({ children }) {
         openLogin, setOpenLogin,
         openSignUp, setOpenSignUp,
         isLoggedIn, setIsLoggedIn,
+        flightBookingId, setFlightBookingId,
       }}
     >
       {children}

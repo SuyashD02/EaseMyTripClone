@@ -11,6 +11,8 @@ import Hotels from "../Page/Hotels/Hotels Record/Hotels";
 import FlightsRecords from "../Page/Flights/Flights Records/FlightsRecords";
 import TrainDetail from "../Page/Train/Train Detail/TrainDetail";
 import BusDetail from "../Page/Bus/Bus Detail/BusDetail";
+import PrivateRoute from "./PrivateRoute";
+import FlightBooking from "../Page/Flights/Flight Booking/FlightBooking";
 function Routing(){
     return(
         <BrowserRouter>
@@ -26,6 +28,11 @@ function Routing(){
             <Route path="/trainrecord" element={<TrainDetail/>} />
             <Route path="/bus" element={<Bus/>}/>
             <Route path="/busrecord" element={<BusDetail/>}/>
+
+            <Route path="/flightbooking" element={<FlightBooking/>} />
+            <Route element={<PrivateRoute/>}>
+
+            </Route>
         </Routes>
         </BrowserRouter>
     )

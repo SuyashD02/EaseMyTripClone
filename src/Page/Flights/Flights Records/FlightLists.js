@@ -2,9 +2,11 @@ import React,{useState} from "react";
 import Classes from "./FlightRecord.module.css";
 import { useAuth } from "../../../components/Context";
 import FlightDetail from "../Flight Detail/FlightDetail";
+import { useNavigate } from "react-router-dom";
 function FlightLists({ searchResults }) {
   const [flightDetailOpen, setFlightDetailOpen] = useState(false);
-  const {setFlightId,AirportFrom,AirportTo} = useAuth();
+  const {setFlightId,AirportFrom,AirportTo,setFlightBookingId} = useAuth();
+  const navigate = useNavigate();
   const handleFlightDetailOpen = (id) => {
     setFlightId(id);
     setFlightDetailOpen((prevOpen) => ({
@@ -12,6 +14,10 @@ function FlightLists({ searchResults }) {
       [id]: !prevOpen[id] || false,
     }));
   };
+  const handleBookFlight=(id)=>{
+    setFlightBookingId(id);
+    navigate("/flightbooking");
+  }
   return (
     <div className="h-[100%] w-[100%]">
       {searchResults.length > 0 ? (
@@ -51,11 +57,15 @@ function FlightLists({ searchResults }) {
                   </div>
                   <div className="text-[11px] w-[83%] text-[#737373] flex justify-center">{flightApidata?.availableSeats} Seats Left</div>
                 </div>
+                
                 <div className="h-[100%] w-[20%] flex justify-center items-center">
-                  <p className="bg-[#ef6614] rounded-[40px] text-[14px] text-[#fff] w-[90%] h-[40%] flex justify-center items-center cursor-pointer">
+               
+                  <p className="bg-[#ef6614] rounded-[40px] text-[14px] text-[#fff] w-[90%] h-[40%] flex justify-center items-center cursor-pointer" onClick={() => handleBookFlight(flightApidata._id)}>
                     Book Now
                   </p>
+                  
                 </div>
+                
               </div>
             </div>
             <div className="w-[100%] h-[30px] flex justify-center items-center bg-[#EFF3F6]">
