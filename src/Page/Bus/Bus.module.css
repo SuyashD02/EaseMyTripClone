@@ -70,6 +70,7 @@
     color: #000;
     border: none;
     cursor: pointer;
+    background-color: transparent;
  }
  .inputBus:focus{
     outline: none;

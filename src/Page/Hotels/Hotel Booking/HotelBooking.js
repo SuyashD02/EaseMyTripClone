@@ -1,22 +1,23 @@
 import React,{useState,useEffect} from "react";
 import Navbar from "../../../components/NavBar/Navbar";
 import { useAuth } from "../../../components/Context";
+import Classes from "../Hotels.module.css";
 import moment from "moment";
-import Classes from "../Flights.module.css";
+
 import Divider from "@mui/material/Divider";
 
-function FlightBooking(){
+function HotelBooking(){
     const [hotelDetailError, setHotelDetailError] = useState(null);
-    const [flightBookingDetailData, setFlightBookingDetailData] = useState([]);
-    const {flightBookingId,AirportFrom,AirportTo,flightdepartureDate,seatCount} = useAuth();
-    const departureDay= moment(flightdepartureDate).format("ddd");
-    const departureDate= moment(flightdepartureDate).format("DD MMM YYYY");
+    const [hotelBookingDetailData, setHotelBookingDetailData] = useState([]);
+    const {hotelBookingId,hotelDepartureDate,seatCount} = useAuth();
+    const departureDay= moment(hotelDepartureDate).format("ddd");
+    const departureDate= moment(hotelDepartureDate).format("DD MMM YYYY");
 
     const fetchSingleFlightData = async () => {
         try {
           const projectID = "2zqsmiro66wm";
           const response = await fetch(
-            `https://academics.newtonschool.co/api/v1/bookingportals/flight/${flightBookingId}`,
+            `https://academics.newtonschool.co/api/v1/bookingportals/hotel/${hotelBookingId}`,
             {
               method: "GET",
               headers: {
@@ -28,7 +29,7 @@ function FlightBooking(){
           if (response.ok) {
             const data = await response.json();
             console.log(data);
-            setFlightBookingDetailData(data?.data);
+            setHotelBookingDetailData(data?.data);
           } else {
             const errorData = await response.json();
             setHotelDetailError(errorData.message);
@@ -40,7 +41,7 @@ function FlightBooking(){
       };
       useEffect(() => {
         fetchSingleFlightData();
-      }, []);
+      }, [hotelBookingId]);
     return(
         <div>
             <Navbar/>
@@ -58,18 +59,18 @@ function FlightBooking(){
                                 <div className="text-[15px] text-[#1a1a1a] flex gap-[10px]">
                                     <div className={Classes.flightbookDetailImg}></div>
                                     <div className="flex gap-[7px] items-center ">
-                                    <span className="text-[20px] text-[#1a1a1a] ">{flightBookingDetailData?.source} - {flightBookingDetailData?.destination} </span> |<span className="text-[12px] text-[#6a6868]">{departureDay} - {departureDate}</span>
+                                    <span className="text-[20px] text-[#1a1a1a] ">{hotelBookingDetailData?.location}</span> |<span className="text-[12px] text-[#6a6868]">{departureDay} - {departureDate}</span>
                                     </div>
                                 </div>
                                 <div className=" w-[100%] flex">
-                                    
-                    <div className=" w-[25%] h-[100%] flex ">
-                            <span className="text-[16px] text-[#1e1f1f]">{flightBookingDetailData?.flightID}</span>
+                                    {/* tiil Yet Edited */}
+                    {/* <div className=" w-[25%] h-[100%] flex ">
+                            <span className="text-[16px] text-[#1e1f1f]">{hotelBookingDetailData?.flightID}</span>
                     </div>
                     <div className=" w-[75%] h-[100%] flex gap-[10px]">
                         <div className="w-[32%] h-[100%] flex flex-col items-center">
                             <div className="w-[80%]">
-                            <div className="text-[24px] text-[#1a1a1a] font-[600] ">{flightBookingDetailData?.departureTime}</div>
+                            <div className="text-[24px] text-[#1a1a1a] font-[600] ">{hotelBookingDetailData?.departureTime}</div>
                             <div className="text-[12px]  text-[#6a6868] font-[600]">
                              <span>{AirportFrom[0]}</span> <span>({AirportFrom[2]})</span>
                             </div>
@@ -80,7 +81,7 @@ function FlightBooking(){
                         </div>
                         <div className=" w-[32%] h-[100%] flex flex-col items-center">
                         <div className="text-[12px] text-[#6a6868] mt-[5px] items-center">
-                                <span>{flightBookingDetailData?.duration}h 10m</span>
+                                <span>{hotelBookingDetailData?.duration}h 10m</span>
                             </div>
                             
                             <div className={Classes.flightFromToImg}>
@@ -92,7 +93,7 @@ function FlightBooking(){
                         </div>
                         <div className="w-[32%] h-[100%] flex flex-col items-center">
                         <div className="w-[45%]">
-                            <div className="w-[90%]  text-[24px] text-[#1a1a1a] font-[600] ">{flightBookingDetailData?.arrivalTime}</div>
+                            <div className="w-[90%]  text-[24px] text-[#1a1a1a] font-[600] ">{hotelBookingDetailData?.arrivalTime}</div>
                             <div className="text-[12px]  text-[#6a6868] font-[600]">
                              <span>{AirportTo[0]}</span> <span>({AirportTo[2]})</span>
                             </div>
@@ -101,7 +102,7 @@ function FlightBooking(){
                             </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     
                 
                                 </div>
@@ -109,7 +110,7 @@ function FlightBooking(){
                         </div>
                     </div>
                 </div>
-                <div className={Classes.personalDetailFlight}>
+                {/* <div className={Classes.personalDetailFlight}>
                 <div className={Classes.bookingHeader}>
                         <div className={Classes.PersbookingImg}></div>
                         <span>Travellers Details</span>
@@ -128,11 +129,11 @@ function FlightBooking(){
                 </div>
               </div>
             </div>
-                </div>
+                </div> */}
                
 
                </div>
-               <div className="w-[26%] mt-[20px] flex flex-col">
+               {/* <div className="w-[26%] mt-[20px] flex flex-col">
                 <div className={Classes.flightBookingAmont}>
                     <div className={Classes.flighBokkingAmountHeader}>
                         <div className="text-[18px] text-[#1a1a1a] h-[50px] flex items-center ml-[10px]">
@@ -142,7 +143,7 @@ function FlightBooking(){
                     <div className=" w-[100%]">
                         <div className="w-[100%] border-b-2  border-b-[#e5e3e3] flex justify-between">
                             <div className="w-[66%] pl-[4%] text-[13px] text-[#1a1a1a] h-[35px] flex items-center">Adult x 1</div>
-                            <div className="w-[30%] text-[#1a1a1a] text-[12px] h-[35px] font-[600] flex items-center gap-[5px]"><i>₹</i>{" "}{flightBookingDetailData?.ticketPrice}</div>
+                            <div className="w-[30%] text-[#1a1a1a] text-[12px] h-[35px] font-[600] flex items-center gap-[5px]"><i>₹</i>{" "}{hotelBookingDetailData?.ticketPrice}</div>
                         </div>
                         <Divider flexItem />
                         <div className="w-[100%] border-b-2  border-b-[#e5e3e3] flex justify-between">
@@ -154,8 +155,8 @@ function FlightBooking(){
                                   <div className="w-[66%] pl-[4%] text-[18px] text-[#d63b05] h-[35px] font-bold flex items-center">Grand Total</div>
                                   <div className="w-[30%] text-[18px] text-[#d63b05] font-bold h-[35px] flex items-center gap-[5px]">
                                     <i>₹</i>{" "}
-                                    {flightBookingDetailData?.ticketPrice * seatCount}
-                                    {/* * selectedSeats.length */}
+                                    {hotelBookingDetailData?.ticketPrice * seatCount}
+                                   
                                   </div>
                                 </div>
                     </div>
@@ -164,12 +165,13 @@ function FlightBooking(){
                 <div className="w-[100%] mt-[7px]">
                       <p className="bg-[#ef6614] text-[#fff] text-[19px] h-[45px] cursor-pointer rounded-[40px] flex justify-center items-center">Continue Booking</p>
                     </div> 
-               </div>
+               </div> */}
             </div>
+            
             
 
             </div>
         </div>
     )
 }
-export default FlightBooking;
+export default HotelBooking;

@@ -53,6 +53,7 @@
     font-weight: 500;
     color: #737373;
     font-size: 14px;
+
 }
  .swapDiv{
     width: 2%;
@@ -72,6 +73,7 @@
     font-weight: 700;
     color: #737373;
     border: none;
+    background-color: transparent;
  }
  .inputTrain:focus{
     outline: none;

@@ -14,13 +14,15 @@ function HotelHome() {
     hotelLocation,
     hotelDepartureDate,
     setHotelDepartureDate,
-    isSelectedDayCheckOut, setSelectedDayCheckOut
+    isSelectedDayCheckOut, setSelectedDayCheckOut,seatHotelCount, setSeatHotelCount,seatHotelAdultsCount,
+    setSeatHotelAdultsCount,seatHotelChildrenCount,setSeatHotelChildrenCount
   } = useAuth();
   const navigate = useNavigate();
   const [offers, setOffers] = useState([]);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOfferType, setSelectedOfferType] = useState("HOTELS");
   const [loading, setLoading] = useState(true);
+  const [HotelTraveller, setHotelTraveller] = useState(false);
   const locations = [
     "Mumbai",
     "Delhi",
@@ -134,6 +136,29 @@ function HotelHome() {
 
     fetchOffers();
   }, [selectedOfferType]);
+
+  const handleHotelTraveller = () => {
+    setHotelTraveller(!HotelTraveller);
+  };
+
+  const incrementHotelAdultsSeatCount = () => {
+    setSeatHotelCount((prevCount) => prevCount + 1);
+    setSeatHotelAdultsCount((prevCount) => prevCount + 1);
+  };
+
+  const decrementHotelAdultsSeatCount = () => {
+    setSeatHotelCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
+    setSeatHotelAdultsCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
+  };
+  const incrementHotelChildrenSeatCount = () => {
+    setSeatHotelCount((prevCount) => prevCount + 1);
+    setSeatHotelChildrenCount((prevCount) => prevCount + 1);
+  };
+
+  const decrementHotelChildrenSeatCount = () => {
+    setSeatHotelCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
+    setSeatHotelChildrenCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 0));
+  };
   return (
     <div className={Classes.flightsSection}>
       <Navbar />
@@ -208,13 +233,49 @@ function HotelHome() {
           </div>
           <Divider orientation="vertical" />
           <div className={Classes.searchTraveller}>
-            <div className={Classes.hotelChooseRooms}>
+            <div onClick={handleHotelTraveller} className={Classes.hotelChooseRooms}>
               <div>
-                <p className={Classes.pInput}>Rooms & Guests</p>
+                <p className={Classes.pInput}>Guests</p>
+              </div>
+              <div className="flex justify-evenly items-center">
+              <span className="text-[26px] font-[600] text-[#000]">{seatHotelCount}</span>
+              <span className="text-[13px] text-[#000] font-[600]"> Guests(s)</span>
+              <i className={Classes.dropDownArrow}></i>
               </div>
             </div>
           </div>
+          {HotelTraveller && 
+          <div className="w-[15%] h-55 absolute bg-slate-50 mt-14 p-2 rounded ml-[52em] z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+            <div className=" w-[98%] flex flex-col gap-[5px]">
+                <div className="w-[100%] flex mb-[15px] mt-[5px] justify-between items-center">
+                    <div className="flex flex-col justify-center">
+                        <p className="text-[13px] text-[#000] font-[600]"> Adults</p>
+                        <p className="text-[11px]">(12+ Years)</p>
+                    </div>
+                    <div className=" rounded-[4px] border border-[#dcdcdc] border-solid flex items-center">
+                        <button className="w-[26px] h-[31px] border-[0] text-[18px] cursor-pointer text-[#000]" onClick={decrementHotelAdultsSeatCount} disabled={seatHotelAdultsCount <= 1}>-</button>
+                        <input className={Classes.travellerInput}type="text" value={seatHotelAdultsCount} readOnly/>
+                        <button className="w-[26px] h-[31px] border-[0] text-[18px] cursor-pointer text-[#000]" onClick={incrementHotelAdultsSeatCount} disabled={seatHotelAdultsCount >= 9}>+</button>
+                    </div>
+                </div>
+                <div className="w-[100%] flex mb-[15px] justify-between items-center">
+                    <div className="flex flex-col justify-center">
+                        <p className="text-[13px] text-[#000] font-[600]"> Children</p>
+                        <p className="text-[11px]">(2-12 Years)</p>
+                    </div>
+                    <div className=" rounded-[4px] border border-[#dcdcdc] border-solid flex items-center">
+                        <button className="w-[26px] h-[31px] border-[0] text-[18px] cursor-pointer text-[#000]" onClick={decrementHotelChildrenSeatCount} disabled={seatHotelChildrenCount <= 0}>-</button>
+                        <input className={Classes.travellerInput}type="text" value={seatHotelChildrenCount} readOnly/>
+                        <button className="w-[26px] h-[31px] border-[0] text-[18px] cursor-pointer text-[#000]" onClick={incrementHotelChildrenSeatCount} disabled={seatHotelChildrenCount >= 9}>+</button>
+                    </div>
+                </div>
+               
+                <div className="w-[100%] border border-solid border-[#2196f3] text-[14px] font-[600] bg-[#fff] text-[#2196f3] flex rounded-[5px] mt-[7px] cursor-pointer justify-center items-center hover:text-[#fff] hover:bg-[#2196f3] pt-[8px] pb-[8px]" onClick={handleHotelTraveller}> Done</div>
+               
 
+            </div> 
+            </div>
+          }
           <div className={Classes.searchButton} onClick={handleSearch}>
             <h3>SEARCH</h3>
           </div>

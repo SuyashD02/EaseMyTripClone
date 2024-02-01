@@ -35,6 +35,14 @@ export function AuthProvider({ children }) {
   const [openSignUp, setOpenSignUp] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [flightBookingId, setFlightBookingId] = useState("");
+  const [hotelBookingId, setHotelBookingId] = useState("");
+  const [seatCount, setSeatCount] = useState(1);
+  const [seatHotelCount, setSeatHotelCount] = useState(1);
+  const [seatAdultsCount, setSeatAdultsCount] = useState(1);
+  const [seatChildrenCount, setSeatChildrenCount] = useState(0);
+  const [seatInfantCount, setSeatInfantCount] = useState(0);
+  const [seatHotelAdultsCount, setSeatHotelAdultsCount] = useState(1);
+  const [seatHotelChildrenCount, setSeatHotelChildrenCount] = useState(0);
   return (
     <AuthContext.Provider
       value={{
@@ -66,6 +74,14 @@ export function AuthProvider({ children }) {
         openSignUp, setOpenSignUp,
         isLoggedIn, setIsLoggedIn,
         flightBookingId, setFlightBookingId,
+        seatCount, setSeatCount,
+        seatHotelCount, setSeatHotelCount,
+        seatAdultsCount, setSeatAdultsCount,seatChildrenCount, setSeatChildrenCount,
+        seatInfantCount, setSeatInfantCount,
+        seatHotelAdultsCount, setSeatHotelAdultsCount,
+        seatHotelChildrenCount, setSeatHotelChildrenCount,
+        hotelBookingId, setHotelBookingId,
+
       }}
     >
       {children}

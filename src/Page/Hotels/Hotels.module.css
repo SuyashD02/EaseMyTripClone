@@ -117,13 +117,15 @@
     width: 15vw;
     height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    cursor: pointer;
 }
 .searchRoomsClick{
-    height: 6vh;
-    width: 17vw;
-    margin-left: 10px;
+    width: 92%;
+    height: 90%;
+    display:flex;
+    flex-direction: column;
+    font-size: 14px;
 }
 .searchButtonHotel{
     height: 100%;
@@ -676,5 +678,43 @@
     border-radius: 5px;
     background-color: #fff;
     overflow: hidden;
+}
+.dropMyLocationChild{
+    box-shadow: 1px 2px 5px black;
+    background-color: white;
+    border-radius: 5px;
+    height: 22vh;
+    width: 25vw;
+    display: flex;
+    margin-left: -10px;
+    flex-direction: column;
+    gap: 10px;
+    
+    margin-top: 190px;
+    position: absolute;
+    overflow-y: auto;
+}
+.dropDownArrow{
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate( 45deg );
+    position: relative;
+    top: -1px;
+    margin-left: 10px 
+}
+.travellerInput{
+    border: 0;
+    text-align: center;
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    font-size: 14px;
+    width: 30px;
+    height: 31px;
+    background: #f6f9ff;
+}
+.travellerInput:focus{
+    outline: none;
 }
 /* "w-[100%] h-[10vh] border-red-500 border-solid" */

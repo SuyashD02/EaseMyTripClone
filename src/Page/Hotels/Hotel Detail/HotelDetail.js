@@ -4,11 +4,13 @@ import HotelSearchbar from "../HotelSearchbar";
 import Classes from "../Hotels.module.css";
 import { Divider } from '@mui/material';
 import { useAuth } from "../../../components/Context";
+import { useNavigate } from "react-router-dom";
 
 function HotelDetail() {
   const [hotelDetailData, setHotelDetailData] = useState([]);
   const [hotelDetailError, setHotelDetailError] = useState(null);
-  const { hotelId } = useAuth();
+  const { hotelId,setHotelBookingId } = useAuth();
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchHotelData = async () => {
       try {
@@ -40,7 +42,10 @@ function HotelDetail() {
     fetchHotelData();
   }, [hotelId]);
 
-
+  const handleBookFlight=(id)=>{
+    setHotelBookingId(id);
+    navigate("/hotelbooking");
+  }
   return (
     <div>
       <Navbar />
@@ -131,7 +136,7 @@ function HotelDetail() {
                     <div className=" w-[47%] h-[70%] border hover:bg-[#2196f3] text-[#2196f3] border-[#2196f3] border-500 border-solid flex justify-center items-center hover:text-[#fff] rounded-[40px] font-[600] text-[15px] cursor-pointer">
                       <p>Select Rooms</p>
                     </div>
-                    <div className=" w-[47%] h-[70%] border hover:bg-[#da5200] bg-[#EF6614] text-[#fff] border-[#EF6614] border-500 border-solid flex justify-center items-center hover:text-[#fff] rounded-[40px] font-[600] text-[15px] cursor-pointer">
+                    <div className=" w-[47%] h-[70%] border hover:bg-[#da5200] bg-[#EF6614] text-[#fff] border-[#EF6614] border-500 border-solid flex justify-center items-center hover:text-[#fff] rounded-[40px] font-[600] text-[15px] cursor-pointer" onClick={() => handleBookFlight(hotelDetailData._id)}>
                       <div>
                         <p>Book Now</p>
                       </div>

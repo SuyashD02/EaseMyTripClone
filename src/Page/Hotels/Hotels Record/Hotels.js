@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
-
 import Classes from "../Hotels.module.css";
 import Navbar from "../../../components/NavBar/Navbar";
-
 import "react-datepicker/dist/react-datepicker.css";
 import _debounce from "lodash/debounce";
 import { Box, Divider, Modal } from "@mui/material";
-
 import { useAuth } from "../../../components/Context";
+import ListItemButton from "@mui/material/ListItemButton";
 import HotelResult from "./HotelResult";
 
 function Hotels() {
@@ -22,6 +20,8 @@ function Hotels() {
     setSearchHotelResults,
     isSelectedDayCheckOut,
     setSelectedDayCheckOut,
+    seatHotelCount, setSeatHotelCount,seatHotelAdultsCount,
+    setSeatHotelAdultsCount,seatHotelChildrenCount,setSeatHotelChildrenCount
   } = useAuth();
   const [page, setPage] = useState(1);
   const [isFetching, setIsFetching] = useState(false);
@@ -34,8 +34,58 @@ function Hotels() {
   const [selectedOption, setSelectedOption] = useState(0);
   const [value, setValue] = useState("$gte");
   const [field, setField] = useState("rating");
-  
+  const locations = [
+    "Mumbai",
+    "Delhi",
+    "Bangalore",
+    "Kolkata",
+    "Chennai",
+    "Hyderabad",
+    "Pune",
+    "Ahmedabad",
+    "Surat",
+    "Jaipur",
+    "Lucknow",
+    "Kanpur",
+    "Nagpur",
+    "Indore",
+    "Thane",
+    "Bhopal",
+    "Visakhapatnam",
+    "Pimpri-Chinchwad",
+    "Patna",
+    "Vadodara",
+    "Ghaziabad",
+    "Jodhpur",
+    "Dhanbad",
+    "Gwalior",
+    "Rajkot",
+    "Kalyan-Dombivali",
+    "Vasai-Virar",
+    "Ludhiana",
+    "Meerut",
+    "Amritsar",
+    "Agra",
+    "Faridabad",
+    "Coimbatore",
+    "Varanasi",
+    "Allahabad",
+    "Vijayawada",
+    "Jabalpur",
+    "Raipur",
+    "Srinagar",
+  ];
+  const [filteredLocations, setFilteredLocations] = useState(locations);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [HotelTraveller, setHotelTraveller] = useState(false);
+  const openDropdown = () => {
+    setDropdownOpen(true);
+  };
 
+  const closeDropdown=()=>{
+    console.log("Closing dropdown");
+    setDropdownOpen(false);
+  };
   const CustomInput = ({ value, onClick }) => (
     <input
       className={Classes.hotelInputDatepickIn}
@@ -54,7 +104,16 @@ function Hotels() {
       readOnly
     />
   );
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setHotelLocation(inputValue);
 
+    const filtered = inputValue ==="" ? locations :locations.filter((location) =>
+    location.toLowerCase().includes(inputValue.toLowerCase())
+    );
+
+    setFilteredLocations(filtered);
+  };
   async function handleHotelSearch() {
     console.log("Hotel Search Function Called");
     if (isFetching || (initialApiCallMade && page < 1)) {
@@ -123,6 +182,10 @@ function Hotels() {
     setSelectedOption(value === selectedOption ? 0 : value);
   };
 
+  const handleLocationClick = (location) => {
+    setHotelLocation(location);
+   
+  };
   const handleClickSet = (type, key, data) => {
     setField(type);
     setValue(key === value ? "$gte":key);
@@ -156,6 +219,29 @@ function Hotels() {
     handleHotelSearch();
   };
 
+  const handleHotelTraveller = () => {
+    setHotelTraveller(!HotelTraveller);
+  };
+
+  const incrementHotelAdultsSeatCount = () => {
+    setSeatHotelCount((prevCount) => prevCount + 1);
+    setSeatHotelAdultsCount((prevCount) => prevCount + 1);
+  };
+
+  const decrementHotelAdultsSeatCount = () => {
+    setSeatHotelCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
+    setSeatHotelAdultsCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
+  };
+  const incrementHotelChildrenSeatCount = () => {
+    setSeatHotelCount((prevCount) => prevCount + 1);
+    setSeatHotelChildrenCount((prevCount) => prevCount + 1);
+  };
+
+  const decrementHotelChildrenSeatCount = () => {
+    setSeatHotelCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 1));
+    setSeatHotelChildrenCount((prevCount) => (prevCount > 1 ? prevCount - 1 : 0));
+  };
+
   return (
     <div className={Classes.hotelsParent}>
       <Navbar />
@@ -166,13 +252,27 @@ function Hotels() {
               <p className={Classes.headingInputHotel}>
                 Enter City name,Location or Specific hotel
               </p>
-              <div className={Classes.inputFormSectionHotel}>
+              <div className={Classes.inputFormSectionHotel} onClick={openDropdown}>
                 <input
                   className={Classes.formSearchBoxHotel}
                   placeholder="Enter City name,Location"
                   value={hotelLocation}
-                  onChange={handleSetLocation}
+                  onChange={handleInputChange}
                 ></input>
+                {isDropdownOpen && (
+                  <div className={Classes.dropMyLocationChild} onMouseLeave={closeDropdown}>
+                    {filteredLocations.map((location, index) => (
+                      <ListItemButton
+                        key={index}
+                        onClick={() =>{handleLocationClick(location);}
+                        }
+                      >
+                        <p className={Classes.locationP}>{location}</p>
+                        
+                      </ListItemButton>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -203,11 +303,49 @@ function Hotels() {
             </div>
           </div>
           <div className={Classes.searchRooms}>
-            <div className={Classes.searchRoomsClick}>
-              <p className={Classes.headingCheckOut}>Rooms & Guests</p>
+            <div onClick={handleHotelTraveller}  className={Classes.searchRoomsClick}>
+              <div>
+              <p className={Classes.headingCheckOut}>Guests</p>
+              </div>
+              <div className="flex justify-evenly items-center">
+              <span className=" text-[#000]">{seatHotelCount}</span>
+              <span className=" text-[#000]"> Guests(s)</span>
+              <i className={Classes.dropDownArrow}></i>
+              </div>
             </div>
           </div>
+          {HotelTraveller && 
+          <div className="w-[15%] h-55 absolute bg-slate-50 mt-[11em] p-2 rounded ml-[52em] z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+            <div className=" w-[98%] flex flex-col gap-[5px]">
+                <div className="w-[100%] flex mb-[15px] mt-[5px] justify-between items-center">
+                    <div className="flex flex-col justify-center">
+                        <p className="text-[13px] text-[#000] font-[600]"> Adults</p>
+                        <p className="text-[11px]">(12+ Years)</p>
+                    </div>
+                    <div className=" rounded-[4px] border border-[#dcdcdc] border-solid flex items-center">
+                        <button className="w-[26px] h-[31px] border-[0] text-[18px] cursor-pointer text-[#000]" onClick={decrementHotelAdultsSeatCount} disabled={seatHotelAdultsCount <= 1}>-</button>
+                        <input className={Classes.travellerInput}type="text" value={seatHotelAdultsCount} readOnly/>
+                        <button className="w-[26px] h-[31px] border-[0] text-[18px] cursor-pointer text-[#000]" onClick={incrementHotelAdultsSeatCount} disabled={seatHotelAdultsCount >= 9}>+</button>
+                    </div>
+                </div>
+                <div className="w-[100%] flex mb-[15px] justify-between items-center">
+                    <div className="flex flex-col justify-center">
+                        <p className="text-[13px] text-[#000] font-[600]"> Children</p>
+                        <p className="text-[11px]">(2-12 Years)</p>
+                    </div>
+                    <div className=" rounded-[4px] border border-[#dcdcdc] border-solid flex items-center">
+                        <button className="w-[26px] h-[31px] border-[0] text-[18px] cursor-pointer text-[#000]" onClick={decrementHotelChildrenSeatCount} disabled={seatHotelChildrenCount <= 0}>-</button>
+                        <input className={Classes.travellerInput}type="text" value={seatHotelChildrenCount} readOnly/>
+                        <button className="w-[26px] h-[31px] border-[0] text-[18px] cursor-pointer text-[#000]" onClick={incrementHotelChildrenSeatCount} disabled={seatHotelChildrenCount >= 9}>+</button>
+                    </div>
+                </div>
+               
+                <div className="w-[100%] border border-solid border-[#2196f3] text-[14px] font-[600] bg-[#fff] text-[#2196f3] flex rounded-[5px] mt-[7px] cursor-pointer justify-center items-center hover:text-[#fff] hover:bg-[#2196f3] pt-[8px] pb-[8px]" onClick={handleHotelTraveller}> Done</div>
+               
 
+            </div> 
+            </div>
+          }
           <div className={Classes.searchButtonHotel} onClick={handleSearch}>
             <h3>SEARCH</h3>
           </div>

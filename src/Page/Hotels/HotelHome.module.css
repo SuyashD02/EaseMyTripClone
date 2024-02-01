@@ -41,6 +41,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .mainDivSearch:hover{
     background-color: #bfdef85d;
@@ -63,6 +64,8 @@
     font-weight: 700;
     color: #737373;
     border: none;
+    background-color: transparent;
+    cursor: pointer;
     
 }
 .inputhotel:focus{
@@ -98,6 +101,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     
 }
 .hotelhomesSectionCheckIn:hover{
@@ -128,7 +132,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    cursor: pointer;
    
 }
 .searchReturn:hover{
@@ -140,6 +144,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     
 }
 .searchTraveller:hover{
@@ -148,6 +153,9 @@
 .hotelChooseRooms{
     width: 92%;
     height: 90%;
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .searchButton{
     height: 100%;
@@ -176,6 +184,8 @@
     font-size: 22px;
     font-weight: 700;
     color: #000;
+    background-color: transparent;
+    cursor: pointer;
 }
 .formSearchBox:focus{
     outline: none;
@@ -289,6 +299,29 @@
 .headingOffers{
     font-size: 28px !important;
     font-weight: 700 !important;
+}
+.travellerInput{
+    border: 0;
+    text-align: center;
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    font-size: 14px;
+    width: 30px;
+    height: 31px;
+    background: #f6f9ff;
+}
+.travellerInput:focus{
+    outline: none;
+}
+.dropDownArrow{
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate( 45deg );
+    position: relative;
+    top: -1px;
+    margin-left: 10px 
 }
 
 /* for testing */

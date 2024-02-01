@@ -136,3 +136,27 @@
     background: url(https://flight.easemytrip.com/Content/CSS/filter-sprite.png);
     background-position: -95px -43px;
   }
+
+  .dropDownArrowChild{
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate( 45deg );
+    position: relative;
+    top: -1px;
+    margin-left: 10px 
+  }
+  .travellerInput{
+    border: 0;
+    text-align: center;
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    font-size: 14px;
+    width: 30px;
+    height: 31px;
+    background: #f6f9ff;
+}
+.travellerInput:focus{
+    outline: none;
+}
