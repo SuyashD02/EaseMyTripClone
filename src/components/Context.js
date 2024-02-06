@@ -33,8 +33,11 @@ export function AuthProvider({ children }) {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  var [isLoggedIn, setIsLoggedIn] = useState(false);
   const [flightBookingId, setFlightBookingId] = useState("");
+  const [busBookingId, setBusBookingId] = useState("");
+  const [travelare, setTravelare] = useState("");
+  const [trainBookingId, setTrainBookingId] = useState("");
   const [hotelBookingId, setHotelBookingId] = useState("");
   const [seatCount, setSeatCount] = useState(1);
   const [seatHotelCount, setSeatHotelCount] = useState(1);
@@ -43,6 +46,14 @@ export function AuthProvider({ children }) {
   const [seatInfantCount, setSeatInfantCount] = useState(0);
   const [seatHotelAdultsCount, setSeatHotelAdultsCount] = useState(1);
   const [seatHotelChildrenCount, setSeatHotelChildrenCount] = useState(0);
+  const [guestName, setGuestName] = useState("");
+  const [guestLastName, setGuestLastName] = useState("");
+  const [fare, setFare] = useState("");
+  const [bookingId, setBookingId] = useState("");
+  const [bookingType, setBookingType] = useState("");
+  const [departureTime, setDepartureTime] = useState("");
+  const [arrivalTime, setArrivalTime] = useState("");
+  const [duration, setDuration] = useState("");
   return (
     <AuthContext.Provider
       value={{
@@ -75,12 +86,21 @@ export function AuthProvider({ children }) {
         isLoggedIn, setIsLoggedIn,
         flightBookingId, setFlightBookingId,
         seatCount, setSeatCount,
+        guestLastName, setGuestLastName,
+        guestName, setGuestName,
         seatHotelCount, setSeatHotelCount,
         seatAdultsCount, setSeatAdultsCount,seatChildrenCount, setSeatChildrenCount,
         seatInfantCount, setSeatInfantCount,
         seatHotelAdultsCount, setSeatHotelAdultsCount,
         seatHotelChildrenCount, setSeatHotelChildrenCount,
         hotelBookingId, setHotelBookingId,
+        busBookingId, setBusBookingId,
+        trainBookingId, setTrainBookingId,
+        fare, setFare,
+        bookingId, setBookingId,
+        bookingType, setBookingType,
+        travelare, setTravelare,
+
 
       }}
     >

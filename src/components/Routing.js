@@ -14,6 +14,13 @@ import BusDetail from "../Page/Bus/Bus Detail/BusDetail";
 import PrivateRoute from "./PrivateRoute";
 import FlightBooking from "../Page/Flights/Flight Booking/FlightBooking";
 import HotelBooking from "../Page/Hotels/Hotel Booking/HotelBooking";
+import BusBooking from "../Page/Bus/Bus Booking/BusBooking";
+import TrainBooking from "../Page/Train/Train Booking/TrainBooking";
+import FlightPayMent from "../Page/Flights/Flight Booking/FlightPayMent";
+import HotelPayment from "../Page/Hotels/Hotel Booking/HotelPayment";
+import TrainPayment from "../Page/Train/Train Booking/TrainPayment";
+import BusPayment from "../Page/Bus/Bus Booking/BusPayment";
+import MyBooking from "./NavBar/MyBooking";
 function Routing(){
     return(
         <BrowserRouter>
@@ -29,11 +36,18 @@ function Routing(){
             <Route path="/trainrecord" element={<TrainDetail/>} />
             <Route path="/bus" element={<Bus/>}/>
             <Route path="/busrecord" element={<BusDetail/>}/>
-
+            
+            
+            <Route element={<PrivateRoute/>}>
+            <Route path="/mybooking" element={<MyBooking/>}/>
+            <Route path="/busBooking" element={<BusBooking/>}/>
+            <Route path="/trainBooking" element={<TrainBooking/>}/>
+            <Route path="/flightpayment" element={<FlightPayMent/>}/>
+            <Route path="/hotelpayment" element={<HotelPayment/>}/>
+            <Route path="/trainpayment" element={<TrainPayment/>}/>
+            <Route path="/buspayment" element={<BusPayment/>}/>
             <Route path="/flightbooking" element={<FlightBooking/>} />
             <Route path="/hotelbooking" element={<HotelBooking/>}/>
-            <Route element={<PrivateRoute/>}>
-
             </Route>
         </Routes>
         </BrowserRouter>

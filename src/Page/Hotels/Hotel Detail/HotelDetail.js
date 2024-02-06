@@ -229,7 +229,7 @@ function HotelDetail() {
                   </div>
                   <div className="h-[95%] w-[37%] flex justify-center">
                     <div className="w-[90%] h-[20%]">
-                      <p className="text-[15px] text-[#fff] bg-[#EF6614] h-[80%] border-[#EF6614] font-[600] rounded-[50px] cursor-pointer flex items-center justify-center mt-[10px]">Book Now</p>
+                      <p className="text-[15px] text-[#fff] bg-[#EF6614] h-[80%] border-[#EF6614] font-[600] rounded-[50px] cursor-pointer flex items-center justify-center mt-[10px]" onClick={() => handleBookFlight(hotelDetailData._id)}>Book Now</p>
                     </div>
                   </div>
                 </div>

@@ -547,7 +547,7 @@
 }
 
 .hotelDetailMainInfo{
-    border: 1px solid red;
+    
     height: 99%;
     width: 99%;
     display: flex;
@@ -556,7 +556,7 @@
 .hotelDetailHeaders{
     width: 100%;
     height: 10vh;
-    border: 1px solid red;
+   
     display: flex;
 }
 .hotelDetailName{
@@ -595,19 +595,19 @@
     gap: 1%;
 }
 .hotelDetailImageSection{
-    border: 1px solid black;
+   
     height: 100%;
     width: 65%;
     display: flex;
     gap: 1%;
 }
 .hotelMainImage{
-    border: 1px solid red;
+   
     height: 100%;
     width: 75%;
 }
 .hotelOtherImage{
-    border: 1px solid blue;
+   
     height: 100%;
     width: 24%;
     display: flex;
@@ -615,17 +615,15 @@
     gap: 11px;
 }
 .hotelImageSample1{
-    border: 1px solid red;
+    
     width: 100%;
     height: 31%;
 }
 .hotelImageSample2{
-    border: 1px solid red;
     width: 100%;
     height: 31%;
 }
 .hotelImageSample3{
-    border: 1px solid red;
     width: 100%;
     height: 31%;
 }
@@ -717,4 +715,155 @@
 .travellerInput:focus{
     outline: none;
 }
-/* "w-[100%] h-[10vh] border-red-500 border-solid" */
+.bookingHotelData{
+    float: left;
+    width: 100%;
+    border: 1px solid #b8d0e5;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bookingHotelHeader{
+    width: 100%;
+    font-size: 18px;
+    color: #1a1a1a;
+    height: 50px;
+    line-height: 50px;
+    background: linear-gradient(90deg, #c7dffe 0%, #d8f2ff 100%);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    display: flex;
+    gap: 5px;
+}
+.hotelbookingImg{
+    float: left;
+    content: " ";
+    background: url(https://flight.easemytrip.com/Content/img/traveller/img-sprite.png);
+    width: 35px;
+    height: 35px;
+    background-position: -60px -4px;
+    margin-top: 8px;
+}
+.hotelbookingImgTravell{
+    float: left;
+    content: " ";
+    background: url(https://www.easemytrip.com/Hotels/Content/Hotel/images/traveller-icon.png);
+    width: 22px;
+    height: 21px;
+    background-position: 0 0;
+    margin: 15px 10px 0 5px;
+}
+.hotelBookingDetails{
+    width: 100%;
+    float: left;
+    border: 1px solid #dad6d6;
+    margin-bottom: 0px;
+    border-radius: 4px;
+    background-color:#fff ;
+    margin-top: 15px;
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.HotelbookDetailImg{
+    background: url(https://flight.easemytrip.com/Content/img/traveller/img-sprite.png);
+    width: 42px;
+    height: 20px;
+    background-position: -100px -6px;
+}
+.roomDetailBooking{
+    margin-top: 50px;
+    width: 81%;
+    border-top: 1px solid #e0dede;
+    border-bottom: 1px solid #e0dede;
+}
+.personalDetailHotel{
+    float: left;
+    width: 100%;
+    /* border: 1px solid #b8d0e5;
+    background: #ffffff; */
+    margin-top: 40px;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+.personalDetailHotelChild{
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.21);
+    width: 95%;
+    height: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #b8d0e5;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.persnolDataFlightMobileNo{
+    height: 30px;
+}
+.persnolDataFlightMobileNo:focus{
+    outline: none;
+
+}
+.persnolDataFlightEmail{
+    height: 30px;
+}
+.persnolDataFlightEmail:focus{
+    outline: none;
+}
+.hotelBookingAmont{
+    float: left;
+    width: 100%;
+    border: 1px solid #b8d0e5;
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgb(64 64 64 / 21%);
+}
+.hotelBokkingAmountHeader{
+    width: 100%;
+    background: linear-gradient(90deg, #c7dffe 0%, #d8f2ff 100%);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.PersPaymentmg{
+    float: left;
+    content: " ";
+    background: url(https://bus.easemytrip.com/NewTravellerCss/img/img-sprite-v2.png);
+    width: 35px;
+    height: 35px;
+    background-position: -227px -3px;
+    margin-top: 11px;
+}
+.paymentLeftSection{
+    width: 28%;
+    float: left;
+    padding: 0;
+    background: #f8f8f8;
+    border-right: 1px solid #ccc;
+    height: 100vh;
+}
+.paymentUpiInput{
+    margin-bottom: 2%;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    border: 1px solid #d7d5d5;
+    padding-left: 2%;
+    color: #000;
+    font-size: 14px;
+    border-radius: 4px
+}
+.paymentUpiInput:focus{
+    outline: none;
+}

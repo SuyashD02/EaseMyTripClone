@@ -3,10 +3,16 @@ import Classes from "../Train.module.css";
 import moment from "moment";
 import Divider from "@mui/material/Divider";
 import { useAuth } from "../../../components/Context";
+import { useNavigate } from "react-router-dom";
 function TrainData({ searchResultsTrain }) {
-  const { traindepartureDate } = useAuth();
+  const { traindepartureDate,setTrainBookingId } = useAuth();
   const departureDay = moment(traindepartureDate).format("ddd");
   const departureDate = moment(traindepartureDate).format("DD MMM YYYY");
+  const navigate = useNavigate();
+  const handleBookBus=(id)=>{
+    setTrainBookingId(id);
+    navigate("/trainBooking");
+  }
   return (
     <div className="h-[100%] w-[100%]">
       {searchResultsTrain.length > 0 ? (
@@ -106,7 +112,7 @@ function TrainData({ searchResultsTrain }) {
                     <span className="text-[#ff0000] text-[13px]">
                       Seats Available {coach?.numberOfSeats}
                     </span>
-                    <span className="bg-[#ef6614] text-[#fff] w-[50%] h-[3vh] cursor-pointer rounded-[50px] text-[11px] flex items-center justify-center">
+                    <span className="bg-[#ef6614] text-[#fff] w-[50%] h-[3vh] cursor-pointer rounded-[50px] text-[11px] flex items-center justify-center" onClick={() => handleBookBus(trainApidata._id)}>
                       Book Now
                     </span>
                   </div>

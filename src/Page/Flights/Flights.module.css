@@ -405,13 +405,15 @@
     margin-left: 10px 
 }
 .personalDetail{
-   
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.21);
-    width: 100%;
+    width: 95%;
     height: 100%;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #b8d0e5;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .personalDetailFlight{
     float: left;
@@ -425,6 +427,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
+    background-color: #fff;
 }
 .persnolDataFlightMobileNo{
     height: 30px;
@@ -447,4 +451,43 @@
     height: 35px;
     background-position: -92px -85px;
     margin-top: 8px;
+}
+.PersPaymentmg{
+    float: left;
+    content: " ";
+    background: url(https://bus.easemytrip.com/NewTravellerCss/img/img-sprite-v2.png);
+    width: 35px;
+    height: 35px;
+    background-position: -227px -3px;
+    margin-top: 11px;
+}
+.paymentLeftSection{
+    width: 28%;
+    float: left;
+    padding: 0;
+    background: #f8f8f8;
+    border-right: 1px solid #ccc;
+    height: 100vh;
+}
+.paymentUpiInput{
+    margin-bottom: 2%;
+    height: 40px;
+    line-height: 40px;
+    width: 100%;
+    border: 1px solid #d7d5d5;
+    padding-left: 2%;
+    color: #000;
+    font-size: 14px;
+    border-radius: 4px
+}
+.paymentUpiInput:focus{
+    outline: none;
+}
+.paymentImg{
+    float: right;
+    content: " ";
+    width: 15px;
+    background: url(https://bus.easemytrip.com/NewTravellerCss/img/paymnt-rec.png);
+    height: 24px;
+    background-position: -314px 166px;
 }

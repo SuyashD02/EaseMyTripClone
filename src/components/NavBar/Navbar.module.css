@@ -292,3 +292,40 @@
     right: 25px;
     cursor: pointer;
 }
+.myBookingSection{
+    background-image: linear-gradient(261deg,#56CCF2, #2F80ED );
+    height: 215px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+.myBookingDiv{
+    background-color: white;
+    width: 90%;
+    height: 555px;
+    border-radius: 10px;
+    box-shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.myBookingDiv::-webkit-scrollbar {
+    display: none;
+  }
+.boxMyBooking{
+    display: flex;
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+    height: 100px;
+    gap: 10px;
+    padding: 30px;
+}
+.summeryBox{
+    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+    height: 150px;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+   
+    justify-content: space-between;
+    background-color: white;
+}

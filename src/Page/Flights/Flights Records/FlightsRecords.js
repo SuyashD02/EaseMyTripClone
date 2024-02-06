@@ -187,14 +187,14 @@ function FlightsRecords() {
             </div>
           </div>
           <div className="flex justify-center items-center h-[100%] w-[17%]">
-            <div onClick={handleFlightTraveller}  className="w-[95%] h-[90%] flex flex-col gap-[10px]">
+            <div onClick={handleFlightTraveller}  className="w-[95%] h-[90%] flex flex-col gap-[5px]">
               <div>
                 <p className="text-[14px] font-[500] text-[#fff]">
                   TRAVELLER & CLASS
                 </p>
               </div>
               <div className="flex justify-evenly items-center">
-              <span className="text-[26px] font-[600]  text-[#fff]">{seatCount}</span>
+              <span className="text-[17px] font-[600]  text-[#fff]">{seatCount}</span>
               <span className="text-[13px] text-[#fff] font-[600]"> Traveller(s)</span>
               <i className={Classes.dropDownArrowChild}></i>
               </div>

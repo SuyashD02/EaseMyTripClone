@@ -8,13 +8,15 @@ import ListItemButton from "@mui/material/ListItemButton";
 import { Height } from "@mui/icons-material";
 import { useAuth } from "../Context";
 import ModalLogin from "./ModalLogin";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const UserIcon = localStorage.getItem("photo");
     const UserName = localStorage.getItem("userName");
+    const navigate = useNavigate();
     const {
-      openLogin, setOpenLogin,isLoggedIn,
+      openLogin, setOpenLogin,isLoggedIn,setIsLoggedIn,
     } = useAuth();
     const [isDropdownhelpOpen, setDropdownhelpOpen] = useState(false);
     const openDropdown = () => {
@@ -31,6 +33,16 @@ function Navbar() {
       const closeDropdownhelp = () => {
         setDropdownhelpOpen(false);
       };
+      const handleLoginLogout = () => {
+        if (isLoggedIn) {
+          localStorage.removeItem('token');
+          setIsLoggedIn(false);
+          navigate("/");
+        }
+      };
+      const handleMyBooking=()=>{
+        navigate("/mybooking")
+      }
       
       const handleOpenLogin= () => setOpenLogin(true);
   return (
@@ -106,10 +118,10 @@ function Navbar() {
                     
                     <Divider className={Classes.dividerLogin}/>
                     <div className={Classes.dropMyBookings}>
-                      <ListItemButton>
+                      <ListItemButton onClick={handleMyBooking}>
                       <p className={Classes.bookingP}>My Booking</p>
                       </ListItemButton>
-                    <ListItemButton>
+                    <ListItemButton onClick={handleLoginLogout}>
                     <p className={Classes.bookingP} >Log Out</p>
                     </ListItemButton>
                     

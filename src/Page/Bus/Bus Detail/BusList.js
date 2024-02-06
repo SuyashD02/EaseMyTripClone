@@ -3,6 +3,7 @@ import Classes from "../Bus.module.css";
 import { useAuth } from "../../../components/Context";
 import moment from "moment";
 import Modal from "@mui/material/Modal";
+import { useNavigate } from "react-router-dom";
 function BusList({ searchResultsBus }) {
   const [busDetailOpen, setBusDetailOpen] = useState(false);
   const {
@@ -11,7 +12,9 @@ function BusList({ searchResultsBus }) {
     busToCity,
     selectedSeats,
     setSelectedSeats,
+    busBookingId, setBusBookingId,
   } = useAuth();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [isSelected, setIsSelected] = useState([]);
 
@@ -50,12 +53,11 @@ function BusList({ searchResultsBus }) {
   const departureDay = moment(busdepartureDate).format("ddd");
   const departureDate = moment(busdepartureDate).format("DD MMM YYYY");
 
-  // const handleSelectedSeat = (id) => {
-  //   setIsSelected((prevState) => ({
-  //     ...prevState,
-  //     [id]: !prevState[id] || false,
-  //   }));
-  // };
+  
+  const handleBookBus=(id)=>{
+    setBusBookingId(id);
+    navigate("/busBooking");
+  }
   return (
     <div className="h-[100%] w-[100%] mb-[10px]">
       {searchResultsBus.length > 0 ? (
@@ -578,7 +580,7 @@ function BusList({ searchResultsBus }) {
                                 </div>
                               </div>
                             </div>
-                            <div className="w-[95%] h-[42px] bg-[#ef6614] text-[16px] text-[#fff] mt-[15px] flex justify-center items-center mb-[20px] cursor-pointer">
+                            <div className="w-[95%] h-[42px] bg-[#ef6614] text-[16px] text-[#fff] mt-[15px] flex justify-center items-center mb-[20px] cursor-pointer" onClick={() => handleBookBus(BusApidata._id)}>
                               <p className="flex justify-center items-center">
                                 Continue
                               </p>
