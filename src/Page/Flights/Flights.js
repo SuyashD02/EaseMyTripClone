@@ -4,9 +4,7 @@ import Classes from "./Flights.module.css";
 import Navbar from "../../components/NavBar/Navbar";
 import Divider from "@mui/material/Divider";
 import DatePicker from "react-datepicker";
-import { Avatar, Box, ListItemButton, Modal, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import { Settings, Style } from "@mui/icons-material";
+
 import { useAuth } from "../../components/Context";
 import FlightsTo from "./Flight DropDown/FlightsTo";
 import FlightFrom from "./Flight DropDown/FlightsFrom";
