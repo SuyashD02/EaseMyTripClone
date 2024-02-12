@@ -329,3 +329,35 @@
     justify-content: space-between;
     background-color: white;
 }
+@media(max-width:600px){
+    .navClickSection{
+        border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbarEase{
+        border: 1px solid red;
+        width: 100%;
+    }
+    .navContent{
+        border: 1px solid blue;
+        width: 100%;
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+    }
+    .navLogoSection{
+        width: 40%;
+    }
+    .navRouteContent{
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid red;
+    }
+    .clickSection{
+
+    }
+}
