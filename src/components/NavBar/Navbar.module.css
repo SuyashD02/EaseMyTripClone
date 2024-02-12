@@ -330,6 +330,10 @@
     background-color: white;
 }
 @media(max-width:600px){
+    .navbarEase{
+        height: 70px;
+        border: 1px solid red;
+    }
     .navClickSection{
         border: 1px solid red;
         display: flex;
