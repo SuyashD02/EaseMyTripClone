@@ -3,9 +3,11 @@ import Classes from "./FlightRecord.module.css";
 import { useAuth } from "../../../components/Context";
 import FlightDetail from "../Flight Detail/FlightDetail";
 import { useNavigate } from "react-router-dom";
+import ModalLogin from "../../../components/NavBar/ModalLogin";
 function FlightLists({ searchResults }) {
   const [flightDetailOpen, setFlightDetailOpen] = useState(false);
-  const {setFlightId,AirportFrom,AirportTo,setFlightBookingId} = useAuth();
+  const {openLogin, setOpenLogin,setFlightId,AirportFrom,AirportTo,setFlightBookingId} = useAuth();
+  const jwtToken =localStorage.getItem('token');
   const navigate = useNavigate();
   const handleFlightDetailOpen = (id) => {
     setFlightId(id);
@@ -15,8 +17,12 @@ function FlightLists({ searchResults }) {
     }));
   };
   const handleBookFlight=(id)=>{
+    if(jwtToken != null){
     setFlightBookingId(id);
     navigate("/flightbooking");
+    }else{
+      setOpenLogin(true);
+    }
   }
   return (
     <div className="h-[100%] w-[100%]">
@@ -67,6 +73,7 @@ function FlightLists({ searchResults }) {
                 </div>
                 
               </div>
+              {openLogin && <ModalLogin/>}
             </div>
             <div className="w-[100%] h-[30px] flex justify-center items-center bg-[#EFF3F6]">
               <div
@@ -81,6 +88,7 @@ function FlightLists({ searchResults }) {
         ) : (
           <p className="font-[600] text-[#000] text-[22px] flex justify-center items-center" >No Flight Available For the Selected Day</p>
         )}
+     
     </div>
   );
 }

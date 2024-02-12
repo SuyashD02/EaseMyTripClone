@@ -36,7 +36,6 @@ function Navbar() {
         if (isLoggedIn) {
           localStorage.removeItem('token');
           setIsLoggedIn(false);
-          navigate("/");
         }
       };
       const handleMyBooking=()=>{
