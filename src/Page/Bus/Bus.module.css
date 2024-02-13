@@ -474,3 +474,34 @@
 .paymentUpiInput:focus{
    outline: none;
 }
+
+@media(max-width:600px){
+   .BusBooking{
+      justify-content: space-evenly;
+      height: auto;
+   }
+   .searchBarBus{
+      flex-direction: column;
+      height: auto;
+      margin-bottom: 10px;
+      align-items: center;
+   }
+   .deviderBus{
+      display: none;
+   }
+   .swapTIcon{
+      display: none;
+   }
+   .mainDivBusSearch{
+      width: 100%;
+      border-bottom: 1px solid #e0dede;
+   }
+   .searchDepartureBus{
+      width: 100%;
+      border-bottom: 1px solid #e0dede;
+   }
+   .busOfersBoxes{
+      width: 50%;
+   }
+
+}
