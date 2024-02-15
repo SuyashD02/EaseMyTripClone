@@ -568,4 +568,18 @@
      .flightOffersImage{
         height: 50%;
      }
+     .flightFromToImg{
+        top: 22.5em;
+     }
+     .persnolDataFlightMobileNo{
+        height: 5vh;
+        width: 98%;
+     }
+     .persnolDataFlightEmail{
+        height: 5vh;
+        width: 98%;
+     }
+     .paymentLeftSection{
+        display: none;
+     }
 }

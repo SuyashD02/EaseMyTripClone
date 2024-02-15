@@ -290,7 +290,7 @@ function Hotels() {
                 </div>
               </div>
             </div>
-            <Divider orientation="vertical" />
+            <Divider orientation="vertical" className=" max-[600px]:hidden"/>
             <div className={Classes.searchCheckOut}>
               <div className={Classes.searchCheckOutClick}>
                 <p className={Classes.headingCheckOut}>Check-out</p>
@@ -307,7 +307,7 @@ function Hotels() {
               <div>
               <p className={Classes.headingCheckOut}>Guests</p>
               </div>
-              <div className="flex justify-evenly items-center">
+              <div className="flex justify-evenly items-center max-[600px]:mb-[5px]">
               <span className=" text-[#000]">{seatHotelCount}</span>
               <span className=" text-[#000]"> Guests(s)</span>
               <i className={Classes.dropDownArrow}></i>
@@ -315,7 +315,7 @@ function Hotels() {
             </div>
           </div>
           {HotelTraveller && 
-          <div className="w-[15%] h-55 absolute bg-slate-50 mt-[11em] p-2 rounded ml-[52em] z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+          <div className="w-[15%] max-[600px]:w-[80%] h-55 absolute bg-slate-50 mt-[11em] p-2 rounded lg:ml-[52em] ml-[0] z-10 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
             <div className=" w-[98%] flex flex-col gap-[5px]">
                 <div className="w-[100%] flex mb-[15px] mt-[5px] justify-between items-center">
                     <div className="flex flex-col justify-center">
