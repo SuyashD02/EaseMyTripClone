@@ -61,9 +61,7 @@ function BusDetail(){
             },
           });
           if (response.ok) {
-            console.log("Bus Function called");
             const data = await response.json();
-            console.log(data);
             setSearchResultsBus(data.data.buses);
           } else {
             const errorData = await response.json();

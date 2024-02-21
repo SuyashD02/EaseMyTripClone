@@ -57,7 +57,6 @@ function FlightPayMent() {
       }).then((response) => {
         if (response.ok) {
           setShowSuccessfull(!showSuccessfull);
-          console.log("Successfully Posted");
         }
       });
     }

@@ -42,7 +42,6 @@ function BusBooking(){
   
           if (response.ok) {
             const data = await response.json();
-            console.log(data);
             setBusBookingDetailData(data?.data);
           } else {
             const errorData = await response.json();

@@ -38,7 +38,6 @@ const FlightFrom = ({ onclose }) => {
         .then((flightdata) => {
           const data = flightdata.data.airports;
           setAirportDetail(data);
-          console.log(data)
         });
     };
 

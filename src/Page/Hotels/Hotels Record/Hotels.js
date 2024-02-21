@@ -5,7 +5,7 @@ import Classes from "../Hotels.module.css";
 import Navbar from "../../../components/NavBar/Navbar";
 import "react-datepicker/dist/react-datepicker.css";
 import _debounce from "lodash/debounce";
-import { Box, Divider, Modal } from "@mui/material";
+import { Divider} from "@mui/material";
 import { useAuth } from "../../../components/Context";
 import ListItemButton from "@mui/material/ListItemButton";
 import HotelResult from "./HotelResult";
@@ -115,7 +115,7 @@ function Hotels() {
     setFilteredLocations(filtered);
   };
   async function handleHotelSearch() {
-    console.log("Hotel Search Function Called");
+
     if (isFetching || (initialApiCallMade && page < 1)) {
       return;
     }
@@ -132,15 +132,11 @@ function Hotels() {
       });
       if (response.ok) {
         setPage((prevPage) => prevPage + 1);
-        console.log("Hotel data :");
         const hotelData = await response.json();
-        console.log(hotelData);
         setSearchHotelResults((prevData) => [
           ...prevData,
           ...hotelData.data.hotels,
         ]);
-
-        console.log(hotelData.data.hotels);
         if (!initialApiCallMade) {
           setInitialApiCallMade(true);
         }
@@ -148,7 +144,6 @@ function Hotels() {
         const errorData = await response.json();
         setHotelErrorPost(errorData.message);
       }
-      s;
     } catch (error) {
       console.error("Error fetching data:", error);
       setHotelErrorPost("An error occurred. Please try again.");
@@ -199,7 +194,6 @@ function Hotels() {
     setSearchHotelResults([...originalHotelData]);
   }
   useEffect(() => {
-    console.log(searchHotelResults);
     if (!originalHotelData && searchHotelResults) {
       setOriginalHotelData([...searchHotelResults]);
     }
@@ -351,7 +345,7 @@ function Hotels() {
           </div>
         </div>
       </div>
-      <div className={Classes.rightHeaderHotel}>
+      {/* <div className={Classes.rightHeaderHotel}>
         <div>
           <h5>hotel</h5>
         </div>
@@ -370,7 +364,7 @@ function Hotels() {
             <option value="rating">Customer Ratings</option>
           </select>
         </div>
-      </div>
+      </div> */}
 
       <div className={Classes.hotelbackgroundSection}>
         <div className={Classes.hotelMainSection}>
@@ -526,17 +520,7 @@ function Hotels() {
                 </div>
               </div>
               <div>
-                {/* <select
-            onChange={(e) => handleSort(e.target.value)}
-            value={sortOption}
-            // open={isOpen}
-            name="selectedFruit"
-          >
-            <option value="">-- Select Option --</option>
-            <option value="price">Price (Low to High)</option>
-            <option value="priceDesc">Price (High to Low)</option>
-            <option value="rating">Customer Ratings</option>
-          </select> */}
+                
               </div>
             </div>
           </div>

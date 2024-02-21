@@ -63,9 +63,7 @@ function TrainDetail(){
             },
           });
           if (response.ok) {
-            console.log("Flight Function called");
             const data = await response.json();
-            console.log(data);
             setSearchResultsTrain(data.data.trains);
           } else {
             const errorData = await response.json();

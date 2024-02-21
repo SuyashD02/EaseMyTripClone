@@ -55,7 +55,6 @@ function HotelBooking() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setHotelBookingDetailData(data?.data);
       } else {
         const errorData = await response.json();
@@ -237,7 +236,6 @@ function HotelBooking() {
                   </div>
                   <div className="w-[30%] text-[18px] text-[#d63b05] font-bold h-[35px] flex items-center gap-[5px]">
                     <i>₹</i>{" "}
-                    {/* {hotelBookingDetailData?.avgCostPerNight * seatCount} */}
                     {Math.floor(
                       hotelBookingDetailData?.avgCostPerNight * seatHotelCount
                     )}

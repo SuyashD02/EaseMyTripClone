@@ -49,7 +49,6 @@ function Bus(){
         );
         const data = await response.json();
         setOffers(data.data.offers);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching offers:", error);
         setOffers([]);

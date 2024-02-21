@@ -86,9 +86,7 @@ function FlightsRecords() {
         },
       });
       if (response.ok) {
-        console.log("Flight Function called");
         const data = await response.json();
-        console.log(data);
         setSearchResults(data.data.flights);
       } else {
         const errorData = await response.json();

@@ -4,6 +4,7 @@ import { useAuth } from "../../../components/Context";
 import moment from "moment";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
+import ModalLogin from "../../../components/NavBar/ModalLogin";
 function BusList({ searchResultsBus }) {
   const [busDetailOpen, setBusDetailOpen] = useState(false);
   const {
@@ -12,8 +13,10 @@ function BusList({ searchResultsBus }) {
     busToCity,
     selectedSeats,
     setSelectedSeats,
+    openLogin, setOpenLogin,
     busBookingId, setBusBookingId,
   } = useAuth();
+  const jwtToken =localStorage.getItem('token');
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [isSelected, setIsSelected] = useState([]);
@@ -55,8 +58,12 @@ function BusList({ searchResultsBus }) {
 
   
   const handleBookBus=(id)=>{
+    if(jwtToken != null){
     setBusBookingId(id);
     navigate("/busBooking");
+    }else{
+      setOpenLogin(true);
+    }
   }
   return (
     <div className="h-[100%] w-[100%] mb-[10px]">
@@ -587,6 +594,7 @@ function BusList({ searchResultsBus }) {
                             </div>
                           </div>
                         </div>
+                        {openLogin && <ModalLogin/>}
                       </div>
                     </div>
                   </Modal>

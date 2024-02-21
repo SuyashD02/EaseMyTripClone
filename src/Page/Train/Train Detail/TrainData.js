@@ -4,14 +4,20 @@ import moment from "moment";
 import Divider from "@mui/material/Divider";
 import { useAuth } from "../../../components/Context";
 import { useNavigate } from "react-router-dom";
+import ModalLogin from "../../../components/NavBar/ModalLogin";
 function TrainData({ searchResultsTrain }) {
-  const { traindepartureDate,setTrainBookingId } = useAuth();
+  const { traindepartureDate,setTrainBookingId,openLogin, setOpenLogin } = useAuth();
   const departureDay = moment(traindepartureDate).format("ddd");
+  const jwtToken =localStorage.getItem('token');
   const departureDate = moment(traindepartureDate).format("DD MMM YYYY");
   const navigate = useNavigate();
   const handleBookBus=(id)=>{
+    if(jwtToken != null){
     setTrainBookingId(id);
     navigate("/trainBooking");
+    }else{
+      setOpenLogin(true);
+    }
   }
   return (
     <div className="h-[100%] w-[100%]">
@@ -119,6 +125,7 @@ function TrainData({ searchResultsTrain }) {
                 ))}
               </div>
             </div>
+            {openLogin && <ModalLogin/>}
           </div>
         ))
       ) : (

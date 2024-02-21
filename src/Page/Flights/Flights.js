@@ -49,7 +49,6 @@ function Flights() {
         );
         const data = await response.json();
         setOffers(data.data.offers);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching offers:", error);
         setOffers([]);
@@ -266,7 +265,7 @@ function Flights() {
         >
           Rails
         </p>
-        {/* <p onClick={() => handleOfferTypeChange("BUS")}>Bus</p> */}
+      
       </div>
       <div className={Classes.flightOffersSection}>
         {loading ? (
@@ -293,7 +292,7 @@ function Flights() {
           ))
         )}
       </div>
-      {/* same as hotel */}
+    
     </div>
   );
 }

@@ -32,13 +32,11 @@ const FlightsTo = ({ onclose }) => {
       })
         .then((response) => {
           const data = response.json();
-          console.log(data);
           return data;
         })
         .then((flightdata) => {
           const data = flightdata.data.airports;
           setAirportDetail(data);
-          console.log(data)
         });
     };
 
