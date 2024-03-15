@@ -1,18 +1,21 @@
 import "../styles/App.css";
 import React, { useState,useContext } from "react";
-
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
 
 
 
 const App = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleCheckboxChange = (value) => {
-    setSelectedOption(value === selectedOption ? null : value);
-  };
   
   return (
-    <div>      
+    <div>   
+      <BrowserRouter>
+      <Routes>
+        <Route path="/home" element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+      </Routes>
+      </BrowserRouter>   
     </div>
   );
 };

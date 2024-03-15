@@ -13,6 +13,7 @@ function Navbar() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const UserIcon = localStorage.getItem("photo");
     const UserName = localStorage.getItem("userName");
+    const isToken=localStorage.getItem("token");
     const navigate = useNavigate();
     const {
       openLogin, setOpenLogin,isLoggedIn,setIsLoggedIn,
@@ -98,7 +99,7 @@ function Navbar() {
             />
           </div>
           <div className={Classes.navAcount}>
-          <p>{isLoggedIn? UserName:"My Account"}</p>
+          <p>{isToken? UserName:"My Account"}</p>
                 {isDropdownOpen && (
                   <div className={Classes.dropdownContent}
                   onMouseEnter={openDropdown}
@@ -106,12 +107,12 @@ function Navbar() {
                     >
                     <div className={Classes.accountBox}>
                       <div className={Classes.avatar}>
-                      {isLoggedIn? 
+                      {isToken? 
                       <Avatar src={UserIcon}/>
                     :<Avatar/>}
                         </div>  
                     <div className={Classes.loginBtnSection}>
-                    {isLoggedIn? UserName:<button className={Classes.btnLogin} onClick={handleOpenLogin}>LOGIN OR SIGNUP</button>}
+                    {isToken? UserName:<button className={Classes.btnLogin} onClick={handleOpenLogin}>LOGIN OR SIGNUP</button>}
                     </div>
                     
                     <Divider className={Classes.dividerLogin}/>
