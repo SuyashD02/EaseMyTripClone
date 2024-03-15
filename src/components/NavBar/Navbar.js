@@ -34,7 +34,7 @@ function Navbar() {
         setDropdownhelpOpen(false);
       };
       const handleLoginLogout = () => {
-        if (isLoggedIn) {
+        if (isToken) {
           localStorage.removeItem('token');
           setIsLoggedIn(false);
         }
