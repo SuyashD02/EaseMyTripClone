@@ -226,7 +226,7 @@ function HotelHome() {
               <DatePicker
                 selected={isSelectedDayCheckOut}
                 onChange={(date) => setSelectedDayCheckOut(date)}
-                minDate={new Date()}
+                minDate={hotelDepartureDate}
                 customInput={<CustomInputReturn />}
               />
             </div>

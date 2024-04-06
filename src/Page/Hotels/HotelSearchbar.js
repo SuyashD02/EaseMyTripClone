@@ -107,7 +107,7 @@ function HotelSearchbar(){
               <DatePicker
                 selected={isSelectedDayCheckOut}
                 onChange={(date) => setSelectedDayCheckOut(date)}
-                minDate={new Date()}
+                minDate={hotelDepartureDate}
                 customInput={<CustomInputCheckout />}
               />
             </div>
