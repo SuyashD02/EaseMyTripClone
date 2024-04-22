@@ -115,6 +115,7 @@ function FlightsRecords() {
     setValue(key);
     setSliderValue(data);
   };
+
   return (
     <div>
       <Navbar />
