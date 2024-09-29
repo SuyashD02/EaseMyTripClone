@@ -40,10 +40,10 @@ function ModalLogin() {
       );
       if (response.ok) {
         const data = await response.json();
-
+        console.log("Full Response Data:", data);
         localStorage.setItem("token", data.token);
-        localStorage.setItem("userId", data.data._id);
-        localStorage.setItem("userName",data.data.name);
+        localStorage.setItem("userId", data.data.user._id);
+        localStorage.setItem("userName",data.data.user.name);
         localStorage.setItem("photo","https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/590.jpg");
         setIsLoggedIn(true);
         handleCloseLogin();
